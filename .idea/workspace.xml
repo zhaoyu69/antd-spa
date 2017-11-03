@@ -14,39 +14,42 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MIndex.jsx" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/index/MIndex.jsx">
+      <file leaf-file-name="Form.jsx" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/form/Form.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="538">
-              <caret line="287" column="32" lean-forward="false" selection-start-line="287" selection-start-column="32" selection-end-line="287" selection-end-column="32" />
+            <state relative-caret-position="294">
+              <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
               <folding>
-                <element signature="e#2736#4972#0" expanded="false" />
+                <element signature="e#0#41#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mindex.less" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/style/index/mindex.less">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1743">
-              <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/App.js" />
         <option value="$PROJECT_DIR$/src/components/Login.js" />
         <option value="$PROJECT_DIR$/src/components/header/Calendars.jsx" />
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/style/index/mindex.less" />
+        <option value="$PROJECT_DIR$/src/style/index.less" />
         <option value="$PROJECT_DIR$/src/components/index/MIndex.jsx" />
+        <option value="$PROJECT_DIR$/src/components/Forms/User.js" />
+        <option value="$PROJECT_DIR$/src/components/Forms/User.jsx" />
+        <option value="$PROJECT_DIR$/src/components/Forms/Form.jsx" />
+        <option value="$PROJECT_DIR$/src/components/App.js" />
+        <option value="$PROJECT_DIR$/src/components/form/Form.jsx" />
+        <option value="$PROJECT_DIR$/src/components/SiderCustom.jsx" />
       </list>
     </option>
   </component>
@@ -115,6 +118,13 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="mspa" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mspa" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="form" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -177,18 +187,17 @@
       <workItem from="1509583108770" duration="973000" />
       <workItem from="1509603110138" duration="2522000" />
       <workItem from="1509628319042" duration="7002000" />
-      <workItem from="1509673386584" duration="1254000" />
+      <workItem from="1509673386584" duration="11735000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84380000" />
+    <option name="totallyTimeSpent" value="94861000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.109375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17239584" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -239,16 +248,35 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="6" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/index/MIndex.jsx">
+    <entry file="file://$PROJECT_DIR$/src/components/index/Index.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#2736#4972#0" expanded="false" />
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#1121#1153#0" expanded="false" />
+            <element signature="e#1168#1315#0" expanded="false" />
+            <element signature="e#1332#1378#0" expanded="false" />
+            <element signature="e#1397#1900#0" expanded="false" />
+            <element signature="e#1916#2223#0" expanded="false" />
+            <element signature="e#2225#2516#0" expanded="false" />
+            <element signature="e#2517#2826#0" expanded="false" />
+            <element signature="e#2827#3137#0" expanded="false" />
+            <element signature="e#3138#3451#0" expanded="false" />
+            <element signature="e#3452#3785#0" expanded="false" />
+            <element signature="e#3861#4292#0" expanded="false" />
+            <element signature="e#4306#5143#0" expanded="false" />
+            <element signature="e#5159#7395#0" expanded="false" />
+            <element signature="e#7407#7715#0" expanded="false" />
+            <element signature="e#7878#7993#0" expanded="false" />
+            <element signature="e#8014#9627#0" expanded="false" />
+            <element signature="e#9648#13569#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -261,12 +289,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/index/MIndex.jsx">
+    <entry file="file://$PROJECT_DIR$/src/components/index/Index.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#2736#4972#0" expanded="false" />
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#1121#1153#0" expanded="false" />
+            <element signature="e#1168#1315#0" expanded="false" />
+            <element signature="e#1332#1378#0" expanded="false" />
+            <element signature="e#1397#1900#0" expanded="false" />
+            <element signature="e#1916#2223#0" expanded="false" />
+            <element signature="e#2225#2516#0" expanded="false" />
+            <element signature="e#2517#2826#0" expanded="false" />
+            <element signature="e#2827#3137#0" expanded="false" />
+            <element signature="e#3138#3451#0" expanded="false" />
+            <element signature="e#3452#3785#0" expanded="false" />
+            <element signature="e#3861#4292#0" expanded="false" />
+            <element signature="e#4306#5143#0" expanded="false" />
+            <element signature="e#5159#7395#0" expanded="false" />
+            <element signature="e#7407#7715#0" expanded="false" />
+            <element signature="e#7878#7993#0" expanded="false" />
+            <element signature="e#8014#9627#0" expanded="false" />
+            <element signature="e#9648#13569#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -279,12 +324,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/index/MIndex.jsx">
+    <entry file="file://$PROJECT_DIR$/src/components/index/Index.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#2736#4972#0" expanded="false" />
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#1121#1153#0" expanded="false" />
+            <element signature="e#1168#1315#0" expanded="false" />
+            <element signature="e#1332#1378#0" expanded="false" />
+            <element signature="e#1397#1900#0" expanded="false" />
+            <element signature="e#1916#2223#0" expanded="false" />
+            <element signature="e#2225#2516#0" expanded="false" />
+            <element signature="e#2517#2826#0" expanded="false" />
+            <element signature="e#2827#3137#0" expanded="false" />
+            <element signature="e#3138#3451#0" expanded="false" />
+            <element signature="e#3452#3785#0" expanded="false" />
+            <element signature="e#3861#4292#0" expanded="false" />
+            <element signature="e#4306#5143#0" expanded="false" />
+            <element signature="e#5159#7395#0" expanded="false" />
+            <element signature="e#7407#7715#0" expanded="false" />
+            <element signature="e#7878#7993#0" expanded="false" />
+            <element signature="e#8014#9627#0" expanded="false" />
+            <element signature="e#9648#13569#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -297,12 +359,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/index/MIndex.jsx">
+    <entry file="file://$PROJECT_DIR$/src/components/index/Index.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#2736#4972#0" expanded="false" />
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#1121#1153#0" expanded="false" />
+            <element signature="e#1168#1315#0" expanded="false" />
+            <element signature="e#1332#1378#0" expanded="false" />
+            <element signature="e#1397#1900#0" expanded="false" />
+            <element signature="e#1916#2223#0" expanded="false" />
+            <element signature="e#2225#2516#0" expanded="false" />
+            <element signature="e#2517#2826#0" expanded="false" />
+            <element signature="e#2827#3137#0" expanded="false" />
+            <element signature="e#3138#3451#0" expanded="false" />
+            <element signature="e#3452#3785#0" expanded="false" />
+            <element signature="e#3861#4292#0" expanded="false" />
+            <element signature="e#4306#5143#0" expanded="false" />
+            <element signature="e#5159#7395#0" expanded="false" />
+            <element signature="e#7407#7715#0" expanded="false" />
+            <element signature="e#7878#7993#0" expanded="false" />
+            <element signature="e#8014#9627#0" expanded="false" />
+            <element signature="e#9648#13569#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -315,12 +394,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/index/MIndex.jsx">
+    <entry file="file://$PROJECT_DIR$/src/components/index/Index.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#2736#4972#0" expanded="false" />
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#1121#1153#0" expanded="false" />
+            <element signature="e#1168#1315#0" expanded="false" />
+            <element signature="e#1332#1378#0" expanded="false" />
+            <element signature="e#1397#1900#0" expanded="false" />
+            <element signature="e#1916#2223#0" expanded="false" />
+            <element signature="e#2225#2516#0" expanded="false" />
+            <element signature="e#2517#2826#0" expanded="false" />
+            <element signature="e#2827#3137#0" expanded="false" />
+            <element signature="e#3138#3451#0" expanded="false" />
+            <element signature="e#3452#3785#0" expanded="false" />
+            <element signature="e#3861#4292#0" expanded="false" />
+            <element signature="e#4306#5143#0" expanded="false" />
+            <element signature="e#5159#7395#0" expanded="false" />
+            <element signature="e#7407#7715#0" expanded="false" />
+            <element signature="e#7878#7993#0" expanded="false" />
+            <element signature="e#8014#9627#0" expanded="false" />
+            <element signature="e#9648#13569#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -333,12 +429,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/index/MIndex.jsx">
+    <entry file="file://$PROJECT_DIR$/src/components/index/Index.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#2736#4972#0" expanded="false" />
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#1121#1153#0" expanded="false" />
+            <element signature="e#1168#1315#0" expanded="false" />
+            <element signature="e#1332#1378#0" expanded="false" />
+            <element signature="e#1397#1900#0" expanded="false" />
+            <element signature="e#1916#2223#0" expanded="false" />
+            <element signature="e#2225#2516#0" expanded="false" />
+            <element signature="e#2517#2826#0" expanded="false" />
+            <element signature="e#2827#3137#0" expanded="false" />
+            <element signature="e#3138#3451#0" expanded="false" />
+            <element signature="e#3452#3785#0" expanded="false" />
+            <element signature="e#3861#4292#0" expanded="false" />
+            <element signature="e#4306#5143#0" expanded="false" />
+            <element signature="e#5159#7395#0" expanded="false" />
+            <element signature="e#7407#7715#0" expanded="false" />
+            <element signature="e#7878#7993#0" expanded="false" />
+            <element signature="e#8014#9627#0" expanded="false" />
+            <element signature="e#9648#13569#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -350,20 +463,113 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/style/index/mindex.less">
+    <entry file="file://$PROJECT_DIR$/src/style/login.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1743">
-          <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/index/MIndex.jsx">
+    <entry file="file://$PROJECT_DIR$/src/style/index.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="538">
-          <caret line="287" column="32" lean-forward="false" selection-start-line="287" selection-start-column="32" selection-end-line="287" selection-end-column="32" />
+        <state relative-caret-position="378">
+          <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/style/index/mindex.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="664">
+          <caret line="106" column="22" lean-forward="false" selection-start-line="106" selection-start-column="22" selection-end-line="106" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/chart/Echarts.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="14" selection-end-column="1" />
           <folding>
-            <element signature="e#2736#4972#0" expanded="false" />
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="22" column="1" lean-forward="true" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/BreadcrumbCustom.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/index/Index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="586">
+          <caret line="105" column="27" lean-forward="false" selection-start-line="105" selection-start-column="21" selection-end-line="105" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#1121#1153#0" expanded="false" />
+            <element signature="e#1168#1315#0" expanded="false" />
+            <element signature="e#1332#1378#0" expanded="false" />
+            <element signature="e#1397#1900#0" expanded="false" />
+            <element signature="e#1916#2223#0" expanded="false" />
+            <element signature="e#2225#2516#0" expanded="false" />
+            <element signature="e#2517#2826#0" expanded="false" />
+            <element signature="e#2827#3137#0" expanded="false" />
+            <element signature="e#3138#3451#0" expanded="false" />
+            <element signature="e#3452#3785#0" expanded="false" />
+            <element signature="e#3861#4292#0" expanded="false" />
+            <element signature="e#4306#5143#0" expanded="false" />
+            <element signature="e#5159#7395#0" expanded="false" />
+            <element signature="e#7407#7715#0" expanded="false" />
+            <element signature="e#7878#7993#0" expanded="false" />
+            <element signature="e#8014#9627#0" expanded="false" />
+            <element signature="e#9648#13569#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/SiderCustom.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="46" column="63" lean-forward="false" selection-start-line="46" selection-start-column="63" selection-end-line="46" selection-end-column="63" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/form/Form.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>

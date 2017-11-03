@@ -6,9 +6,10 @@ import noMatch from './404';
 import SiderCustom from './SiderCustom';
 import HeaderCustom from './HeaderCustom';
 
-import MIndex from './index/MIndex';
+import MIndex from './index/Index';
 import Calendars from './header/Calendars';
 import Echarts from './chart/Echarts';
+import UForm from './form/Form';
 
 const {Content, Footer} = Layout;
 
@@ -57,6 +58,7 @@ export default class App extends Component {
                     <Content style={{margin: '0 16px'}}>
                         <Switch>
                             <Route exact path={'/app'} component={MIndex}></Route>
+                            <Route exact path={'/app/form'} component={UForm}></Route>
                             <Route exact path={'/app/header/Calendars'} component={Calendars}></Route>
                             <Route exact path={'/app/chart/echarts'} component={Echarts}></Route>
                             <Route component={noMatch}></Route>
