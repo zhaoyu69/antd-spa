@@ -8,25 +8,25 @@ import $ from 'jquery';
 import CountUp from 'react-countup';
 import ReactEcharts from 'echarts-for-react';
 
-const UID = "UC595CDA71"; // 测试用 用户ID，请更换成您自己的用户ID
-const KEY = "do2sk3zswrkm4mac"; // 测试用key，请更换成您自己的 Key
-const API = "http://api.seniverse.com/v3/weather/now.json"; // 获取天气实况
-const LOCATION = "南京"; // 除拼音外，还可以使用 v3 id、汉语等形式
-
-// 获取当前时间戳
-let ts = Math.floor((new Date()).getTime() / 1000);
-
-// 构造验证参数字符串
-let str = "ts=" + ts + "&uid=" + UID;
-
-// 使用 HMAC-SHA1 方式，以 API 密钥（key）对上一步生成的参数字符串（raw）进行加密
-// 并将加密结果用 base64 编码，并做一个 urlencode，得到签名 sig
-let sig = CryptoJS.HmacSHA1(str, KEY).toString(CryptoJS.enc.Base64);
-sig = encodeURIComponent(sig);
-str = str + "&sig=" + sig;
-
-// 构造最终请求的 url
-let url = API + "?location=" + LOCATION + "&" + str + "&callback=foo";
+// const UID = "UC595CDA71"; // 测试用 用户ID，请更换成您自己的用户ID
+// const KEY = "do2sk3zswrkm4mac"; // 测试用key，请更换成您自己的 Key
+// const API = "http://api.seniverse.com/v3/weather/now.json"; // 获取天气实况
+// const LOCATION = "南京"; // 除拼音外，还可以使用 v3 id、汉语等形式
+//
+// // 获取当前时间戳
+// let ts = Math.floor((new Date()).getTime() / 1000);
+//
+// // 构造验证参数字符串
+// let str = "ts=" + ts + "&uid=" + UID;
+//
+// // 使用 HMAC-SHA1 方式，以 API 密钥（key）对上一步生成的参数字符串（raw）进行加密
+// // 并将加密结果用 base64 编码，并做一个 urlencode，得到签名 sig
+// let sig = CryptoJS.HmacSHA1(str, KEY).toString(CryptoJS.enc.Base64);
+// sig = encodeURIComponent(sig);
+// str = str + "&sig=" + sig;
+//
+// // 构造最终请求的 url
+// let url = API + "?location=" + LOCATION + "&" + str + "&callback=foo";
 
 const Panel = Collapse.Panel;
 const classify = [
@@ -105,17 +105,17 @@ const data = [{
 
 export default class MIndex extends Component {
     componentDidMount() {
-        $.ajax(url, {
-            dataType: 'jsonp',
-            success: function (data) {
-                let weather = data.results[0];
-                let text = [];
-                text.push("Location: " + weather.location.path);
-                text.push("Weather: " + weather.now.text);
-                text.push("Temperature: " + weather.now.temperature);
-                console.log(text);
-            }
-        })
+        // $.ajax(url, {
+        //     dataType: 'jsonp',
+        //     success: function (data) {
+        //         let weather = data.results[0];
+        //         let text = [];
+        //         text.push("Location: " + weather.location.path);
+        //         text.push("Weather: " + weather.now.text);
+        //         text.push("Temperature: " + weather.now.temperature);
+        //         console.log(text);
+        //     }
+        // })
     }
     CountUp(){
         let imgSrc = ["mail","chat","cart","heart"];
