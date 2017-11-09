@@ -1,5 +1,5 @@
 import React, { Component } from 'react'; 
-import BreadcrumbCustom from '../BreadcrumbCustom';
+import BreadcrumbCustom from '../common/BreadcrumbCustom';
 import { Card, Avatar, Row, Col, Progress, Timeline, Collapse, Table, Switch } from 'antd';
 import zysoft from '../../style/img/avatar.jpg';
 import '../../style/index/mindex.less';

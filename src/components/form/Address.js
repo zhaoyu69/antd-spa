@@ -1,4 +1,4 @@
-[
+const Address = [
   {
     "name": "北京市",
     "city": [
@@ -5351,4 +5351,6 @@
       }
     ]
   }
-]
+];
+
+export default Address;

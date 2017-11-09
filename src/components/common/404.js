@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import img404 from '../style/img/404.png';
+import img404 from '../../style/img/404.png';
 
 export default class NoMatch extends Component{
     render(){

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'; 
-import BreadcrumbCustom from '../BreadcrumbCustom';
+import BreadcrumbCustom from '../common/BreadcrumbCustom';
 
 export default class Echarts extends Component{
     render(){
