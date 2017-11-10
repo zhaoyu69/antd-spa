@@ -26,6 +26,8 @@ export default class UForm extends Component{
             address: '',
             timeRange: '',
             visible: false, //新建窗口隐藏
+            dataSource: data,
+            count: data.length,
         };
     }
     onChangeUserName = (e) => {
@@ -71,6 +73,8 @@ export default class UForm extends Component{
             userName: '',
             address: '',
             timeRange: '',
+            dataSource: data,
+            count: data.length,
         });
     };
     Cascader_Select = (value) => {
@@ -83,29 +87,31 @@ export default class UForm extends Component{
         this.form = form;
     };
     handleCreate = () => {
+        const { dataSource, count } = this.state;
         const form = this.form;
-        let ikey = data.length+1;
         form.validateFields((err, values) => {
             if (err) {
                 return;
             }
             console.log('Received values of form: ', values);
 
-            values.key = ikey++;
+            values.key = count;
             values.address = values.address.join(" / ");
             values.createtime = moment().format("YYYY-MM-DD hh:mm:ss");
-            values.opera = values.key;
-            data.push(values);
 
             form.resetFields();
-            this.setState({ visible: false });
+            this.setState({
+                visible: false,
+                dataSource: [...dataSource, values],
+                count: count+1,
+            });
         });
     };
     handleCancel = () => {
         this.setState({ visible: false });
     };
     render(){
-        const { userName, address, timeRange } = this.state;
+        const { userName, address, timeRange, dataSource } = this.state;
         const questiontxt = ()=>{
             return (
                 <p>
@@ -158,7 +164,7 @@ export default class UForm extends Component{
                             <Button type="primary" onClick={this.btnClear_Click} style={{background:'#f8f8f8', color: '#108ee9'}}>重置</Button>
                         </div>
                     </Row>
-                    <FormTable data={data} customizedform={this.CreateItem}>
+                    <FormTable dataSource={dataSource}>
                         <CollectionCreateForm
                             ref={this.saveFormRef}
                             visible={this.state.visible}

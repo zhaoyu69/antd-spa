@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, Icon, Modal } from 'antd';
+import { Table, Icon, Modal, Popconfirm } from 'antd';
 const confirm = Modal.confirm;
 
 const rowSelection = {
@@ -14,24 +14,21 @@ const rowSelection = {
 export default class FormTable extends Component{
     constructor(props){
         super(props);
+        this.state = {
+            dataSource: props.dataSource,
+        };
     }
-    DeleteConfirm = (e) => {
-        console.log(e.target.getAttribute("data-key"));
-        confirm({
-            title: '确定要删除么?',
-            okText: 'Yes',
-            okType: 'danger',
-            cancelText: 'No',
-            onOk() {
-                console.log('OK');
-            },
-            onCancel() {
-                console.log('Cancel');
-            },
-        });
+    componentWillReceiveProps(nextProps){
+        this.setState({
+            dataSource: nextProps.dataSource
+        })
+    }
+    onDelete = (key) => {
+        const dataSource = [...this.state.dataSource];
+        this.setState({ dataSource: dataSource.filter(item => item.key !== key) });
     };
     render(){
-        const { data, customizedform } = this.props;
+        const { dataSource } = this.state;
         const columns = [{
             title: '姓名',
             dataIndex: 'name',
@@ -68,17 +65,17 @@ export default class FormTable extends Component{
             title: '操作',
             dataIndex: 'opera',
             width:100,
-            render: () =>
+            render: (text, record) =>
                 <div className='opera'>
-                    <span onClick={customizedform}><Icon type="edit" /> 修改</span><br />
-                    <span onClick={this.DeleteConfirm}><Icon type="minus-square-o" /> 删除</span>
+                    <span><Icon type="edit" /> 修改</span><br />
+                    <span><Popconfirm title="确定要删除吗?" onConfirm={() => this.onDelete(record.key)}><Icon type="minus-square-o" /> 删除 </Popconfirm></span>
                 </div>
         }];
         return(
             <Table
                 rowSelection={rowSelection}
                 columns={columns}
-                dataSource={data}
+                dataSource={dataSource}
                 bordered={true}
                 scroll={{x:'100%'}}
                 className='formTable'
