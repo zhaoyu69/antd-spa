@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Modal, Form, Input, Radio, InputNumber, Cascader, Select, AutoComplete, Rate, Icon } from 'antd';
 import axios from 'axios';
 import Mock from 'mockjs';
-import Address from './Address';
+import address from './request/address';
 
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -17,7 +17,7 @@ class CustomizedForm extends Component{
         super(props);
     }
     componentDidMount(){
-        Mock.mock("/address", Address);
+        Mock.mock("/address", address);
         axios.get('/address')
             .then(function (response) {
                 console.log(response.data);
@@ -52,9 +52,6 @@ class CustomizedForm extends Component{
             autoCompleteResult = ['.com', '.cn', '.org', '.net'].map(domain => `${value}${domain}`);
         }
         this.setState({ autoCompleteResult });
-    };
-    RateChange = (value) => {
-        this.setState({ smilecount: value });
     };
     render(){
         const { visible, onCancel, onCreate, form } = this.props;

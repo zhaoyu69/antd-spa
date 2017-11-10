@@ -1,46 +1,22 @@
 import React, { Component } from 'react';
-import BreadcrumbCustom from '../common/BreadcrumbCustom';
-import '../../style/form/form.less';
+import './form.less';
+
 import axios from 'axios';
 import Mock from 'mockjs';
-import CollectionCreateForm from './CustomizedForm';
-import Address from './Address';
-import FormTable from './FormTable';
+import moment from 'moment';
 import { Row, Col, Input, Icon, Select, Cascader, DatePicker, Button, Tooltip } from 'antd';
+
+import BreadcrumbCustom from '../common/BreadcrumbCustom';
+import address from './request/address.json';
+import data from './request/data.json';
+import CollectionCreateForm from './CustomizedForm';
+import FormTable from './FormTable';
 
 const Search = Input.Search;
 const InputGroup = Input.Group;
 const Option = Select.Option;
 const options = [];
 const { RangePicker } = DatePicker;
-const data = [{
-    key: '1',
-    name: '小明',
-    sex: '男',
-    age: 16,
-    address: "北京市 / 北京市 / 东城区",
-    phone: '18033669587',
-    email: '845623545@qq.com',
-    website: 'xm123.com'
-},{
-    key: '2',
-    name: '老王',
-    sex: '男',
-    age: 39,
-    address: "安徽省 / 蚌埠市 / 禹会区",
-    phone: '13362589494',
-    email: '563212@gmail.com',
-    website: 'xw456.net'
-},{
-    key: '3',
-    name: '小红',
-    sex: '女',
-    age: 19,
-    address: "江苏省 / 南京市 / 栖霞区",
-    phone: '17366452585',
-    email: '66452585@163.com',
-    website: 'xh789.cn'
-}];
 
 export default class UForm extends Component{
     constructor(props) {
@@ -60,7 +36,7 @@ export default class UForm extends Component{
         this.setState({ timeRange: date });
     };
     componentDidMount(){
-        Mock.mock("/address", Address);
+        Mock.mock('/address', address);
         axios.get('/address')
             .then(function (response) {
                 console.log(response.data);
@@ -108,12 +84,19 @@ export default class UForm extends Component{
     };
     handleCreate = () => {
         const form = this.form;
+        let ikey = data.length+1;
         form.validateFields((err, values) => {
             if (err) {
                 return;
             }
             console.log('Received values of form: ', values);
+
+            values.key = ikey++;
+            values.address = values.address.join(" / ");
+            values.createtime = moment().format("YYYY-MM-DD hh:mm:ss");
+            values.opera = values.key;
             data.push(values);
+
             form.resetFields();
             this.setState({ visible: false });
         });
@@ -172,10 +155,17 @@ export default class UForm extends Component{
                         </div>
                         <div className='btnOpera'>
                             <Button type="primary" onClick={this.btnSearch_Click} style={{marginRight:'10px'}}>查询</Button>
-                            <Button type="primary" onClick={this.btnClear_Click} style={{background:'#f8f8f8', color: '#108ee9'}}>清空</Button>
+                            <Button type="primary" onClick={this.btnClear_Click} style={{background:'#f8f8f8', color: '#108ee9'}}>重置</Button>
                         </div>
                     </Row>
-                    <FormTable data={data}/>
+                    <FormTable data={data} customizedform={this.CreateItem}>
+                        <CollectionCreateForm
+                            ref={this.saveFormRef}
+                            visible={this.state.visible}
+                            onCancel={this.handleCancel}
+                            onCreate={this.handleCreate}
+                        />
+                    </FormTable>
                 </div>
             </div>
         )

@@ -17,17 +17,18 @@
       <file leaf-file-name="Form.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/form/Form.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="25" column="13" lean-forward="true" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+            <state relative-caret-position="-105">
+              <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
-                <element signature="e#1375#1435#0" expanded="false" />
-                <element signature="e#1484#1574#0" expanded="false" />
-                <element signature="e#1599#2647#0" expanded="false" />
-                <element signature="e#2676#2684#0" expanded="false" />
-                <element signature="e#2713#2834#0" expanded="false" />
-                <element signature="e#2869#2919#0" expanded="false" />
-                <element signature="e#3441#3491#0" expanded="false" />
+                <element signature="e#904#964#0" expanded="false" />
+                <element signature="e#1013#1103#0" expanded="false" />
+                <element signature="e#2205#2213#0" expanded="false" />
+                <element signature="e#2242#2363#0" expanded="false" />
+                <element signature="e#2398#2448#0" expanded="false" />
+                <element signature="e#2473#2522#0" expanded="false" />
+                <element signature="e#2552#2585#0" expanded="false" />
+                <element signature="e#3207#3257#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -36,11 +37,21 @@
       <file leaf-file-name="FormTable.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/form/FormTable.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="588">
-              <caret line="34" column="20" lean-forward="true" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
+            <state relative-caret-position="594">
+              <caret line="82" column="20" lean-forward="false" selection-start-line="82" selection-start-column="20" selection-end-line="82" selection-end-column="20" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="data.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/form/request/data.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="9" column="37" lean-forward="true" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -48,23 +59,22 @@
       <file leaf-file-name="CustomizedForm.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/form/CustomizedForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="588">
-              <caret line="65" column="10" lean-forward="true" selection-start-line="65" selection-start-column="10" selection-end-line="65" selection-end-column="10" />
+            <state relative-caret-position="294">
+              <caret line="14" column="6" lean-forward="true" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
                 <element signature="n#!!block;n#constructor#0;n#CustomizedForm#0" expanded="false" />
-                <element signature="n#!!block;n#componentDidMount#0;n#CustomizedForm#0" expanded="false" />
-                <element signature="e#1618#1891#0" expanded="false" />
+                <element signature="e#1626#1899#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="form.less" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/style/form/form.less">
+        <entry file="file://$PROJECT_DIR$/src/components/form/form.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="22" column="20" lean-forward="false" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+            <state relative-caret-position="84">
+              <caret line="4" column="14" lean-forward="true" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -112,8 +122,12 @@
         <option value="$PROJECT_DIR$/src/components/common/App.js" />
         <option value="$PROJECT_DIR$/src/components/common/404.js" />
         <option value="$PROJECT_DIR$/src/style/form/form.less" />
-        <option value="$PROJECT_DIR$/src/components/form/Form.jsx" />
+        <option value="$PROJECT_DIR$/src/components/form/TableData.js" />
+        <option value="$PROJECT_DIR$/src/components/form/request/TableData.js" />
+        <option value="$PROJECT_DIR$/src/components/form/request/address.json" />
         <option value="$PROJECT_DIR$/src/components/form/CustomizedForm.js" />
+        <option value="$PROJECT_DIR$/src/components/form/request/data.json" />
+        <option value="$PROJECT_DIR$/src/components/form/Form.jsx" />
         <option value="$PROJECT_DIR$/src/components/form/FormTable.js" />
       </list>
     </option>
@@ -190,7 +204,21 @@
               <item name="mspa" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="form" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mspa" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mspa" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="form" type="462c0819:PsiDirectoryNode" />
+              <item name="request" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mspa" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mspa" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="style" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -208,10 +236,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Projects\WEB\mspa\src\components\common" />
+      <recent name="E:\Projects\WEB\mspa\src\components\index" />
       <recent name="E:\Projects\WEB\mspa\src\components\form" />
+      <recent name="E:\Projects\WEB\mspa\src\components\form\request" />
+      <recent name="E:\Projects\WEB\mspa\src\components\common" />
       <recent name="F:\web\Projects\mspa\src\style\img" />
-      <recent name="F:\web\Projects\mspa\src\style" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -258,16 +287,15 @@
       <workItem from="1509928288914" duration="1603000" />
       <workItem from="1509946084166" duration="7000" />
       <workItem from="1509955269507" duration="2361000" />
-      <workItem from="1510111708339" duration="36988000" />
+      <workItem from="1510111708339" duration="54161000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135820000" />
+    <option name="totallyTimeSpent" value="152993000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15486258" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -321,7 +349,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="13" />
+      <option name="time" value="14" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -332,18 +360,19 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
-            <element signature="e#1375#1435#0" expanded="false" />
-            <element signature="e#1484#1574#0" expanded="false" />
-            <element signature="e#1599#2647#0" expanded="false" />
-            <element signature="e#2676#2684#0" expanded="false" />
-            <element signature="e#2713#2834#0" expanded="false" />
-            <element signature="e#2869#2919#0" expanded="false" />
-            <element signature="e#3441#3491#0" expanded="false" />
+            <element signature="e#904#964#0" expanded="false" />
+            <element signature="e#1013#1103#0" expanded="false" />
+            <element signature="e#2205#2213#0" expanded="false" />
+            <element signature="e#2242#2363#0" expanded="false" />
+            <element signature="e#2398#2448#0" expanded="false" />
+            <element signature="e#2473#2522#0" expanded="false" />
+            <element signature="e#2552#2585#0" expanded="false" />
+            <element signature="e#3207#3257#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/style/form/form.less">
+    <entry file="file://$PROJECT_DIR$/src/components/form/form.less">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="4" column="1" lean-forward="false" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
@@ -357,18 +386,19 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
-            <element signature="e#1375#1435#0" expanded="false" />
-            <element signature="e#1484#1574#0" expanded="false" />
-            <element signature="e#1599#2647#0" expanded="false" />
-            <element signature="e#2676#2684#0" expanded="false" />
-            <element signature="e#2713#2834#0" expanded="false" />
-            <element signature="e#2869#2919#0" expanded="false" />
-            <element signature="e#3441#3491#0" expanded="false" />
+            <element signature="e#904#964#0" expanded="false" />
+            <element signature="e#1013#1103#0" expanded="false" />
+            <element signature="e#2205#2213#0" expanded="false" />
+            <element signature="e#2242#2363#0" expanded="false" />
+            <element signature="e#2398#2448#0" expanded="false" />
+            <element signature="e#2473#2522#0" expanded="false" />
+            <element signature="e#2552#2585#0" expanded="false" />
+            <element signature="e#3207#3257#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/style/form/form.less">
+    <entry file="file://$PROJECT_DIR$/src/components/form/form.less">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="4" column="1" lean-forward="false" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
@@ -382,18 +412,19 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
-            <element signature="e#1375#1435#0" expanded="false" />
-            <element signature="e#1484#1574#0" expanded="false" />
-            <element signature="e#1599#2647#0" expanded="false" />
-            <element signature="e#2676#2684#0" expanded="false" />
-            <element signature="e#2713#2834#0" expanded="false" />
-            <element signature="e#2869#2919#0" expanded="false" />
-            <element signature="e#3441#3491#0" expanded="false" />
+            <element signature="e#904#964#0" expanded="false" />
+            <element signature="e#1013#1103#0" expanded="false" />
+            <element signature="e#2205#2213#0" expanded="false" />
+            <element signature="e#2242#2363#0" expanded="false" />
+            <element signature="e#2398#2448#0" expanded="false" />
+            <element signature="e#2473#2522#0" expanded="false" />
+            <element signature="e#2552#2585#0" expanded="false" />
+            <element signature="e#3207#3257#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/style/form/form.less">
+    <entry file="file://$PROJECT_DIR$/src/components/form/form.less">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
@@ -407,13 +438,14 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
-            <element signature="e#1375#1435#0" expanded="false" />
-            <element signature="e#1484#1574#0" expanded="false" />
-            <element signature="e#1599#2647#0" expanded="false" />
-            <element signature="e#2676#2684#0" expanded="false" />
-            <element signature="e#2713#2834#0" expanded="false" />
-            <element signature="e#2869#2919#0" expanded="false" />
-            <element signature="e#3441#3491#0" expanded="false" />
+            <element signature="e#904#964#0" expanded="false" />
+            <element signature="e#1013#1103#0" expanded="false" />
+            <element signature="e#2205#2213#0" expanded="false" />
+            <element signature="e#2242#2363#0" expanded="false" />
+            <element signature="e#2398#2448#0" expanded="false" />
+            <element signature="e#2473#2522#0" expanded="false" />
+            <element signature="e#2552#2585#0" expanded="false" />
+            <element signature="e#3207#3257#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -425,7 +457,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/style/index/mindex.less">
+    <entry file="file://$PROJECT_DIR$/src/components/index/index.less">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1743">
           <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
@@ -439,7 +471,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/style/index/mindex.less">
+    <entry file="file://$PROJECT_DIR$/src/components/index/index.less">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1224">
           <caret line="72" column="0" lean-forward="true" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
@@ -453,7 +485,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/style/index/mindex.less">
+    <entry file="file://$PROJECT_DIR$/src/components/index/index.less">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="663">
           <caret line="39" column="7" lean-forward="false" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
@@ -467,7 +499,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/style/index/mindex.less">
+    <entry file="file://$PROJECT_DIR$/src/components/index/index.less">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="663">
           <caret line="39" column="7" lean-forward="true" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
@@ -481,7 +513,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/style/index/mindex.less">
+    <entry file="file://$PROJECT_DIR$/src/components/index/index.less">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
           <caret line="45" column="3" lean-forward="false" selection-start-line="45" selection-start-column="3" selection-end-line="45" selection-end-column="3" />
@@ -564,7 +596,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/style/index/mindex.less">
+    <entry file="file://$PROJECT_DIR$/src/components/index/index.less">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
@@ -576,14 +608,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
           <caret line="7" column="20" lean-forward="false" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/form/Address.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
           <folding />
         </state>
       </provider>
@@ -626,48 +650,72 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/form/request/TableData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="30" lean-forward="false" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/form/request/address.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112119">
+          <caret line="5339" column="14" lean-forward="true" selection-start-line="5339" selection-start-column="14" selection-end-line="5339" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/form/form.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="14" lean-forward="true" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/form/CustomizedForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="65" column="10" lean-forward="true" selection-start-line="65" selection-start-column="10" selection-end-line="65" selection-end-column="10" />
+        <state relative-caret-position="294">
+          <caret line="14" column="6" lean-forward="true" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
             <element signature="n#!!block;n#constructor#0;n#CustomizedForm#0" expanded="false" />
-            <element signature="n#!!block;n#componentDidMount#0;n#CustomizedForm#0" expanded="false" />
-            <element signature="e#1618#1891#0" expanded="false" />
+            <element signature="e#1626#1899#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/style/form/form.less">
+    <entry file="file://$PROJECT_DIR$/src/components/form/request/data.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="22" column="20" lean-forward="false" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+        <state relative-caret-position="189">
+          <caret line="9" column="37" lean-forward="true" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/form/Form.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="25" column="13" lean-forward="true" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        <state relative-caret-position="-105">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
-            <element signature="e#1375#1435#0" expanded="false" />
-            <element signature="e#1484#1574#0" expanded="false" />
-            <element signature="e#1599#2647#0" expanded="false" />
-            <element signature="e#2676#2684#0" expanded="false" />
-            <element signature="e#2713#2834#0" expanded="false" />
-            <element signature="e#2869#2919#0" expanded="false" />
-            <element signature="e#3441#3491#0" expanded="false" />
+            <element signature="e#904#964#0" expanded="false" />
+            <element signature="e#1013#1103#0" expanded="false" />
+            <element signature="e#2205#2213#0" expanded="false" />
+            <element signature="e#2242#2363#0" expanded="false" />
+            <element signature="e#2398#2448#0" expanded="false" />
+            <element signature="e#2473#2522#0" expanded="false" />
+            <element signature="e#2552#2585#0" expanded="false" />
+            <element signature="e#3207#3257#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/form/FormTable.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="34" column="20" lean-forward="true" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
+        <state relative-caret-position="594">
+          <caret line="82" column="20" lean-forward="false" selection-start-line="82" selection-start-column="20" selection-end-line="82" selection-end-column="20" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>

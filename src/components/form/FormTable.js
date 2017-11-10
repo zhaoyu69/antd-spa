@@ -1,39 +1,7 @@
 import React, { Component } from 'react';
-import { Table, Icon, Select } from 'antd';
+import { Table, Icon, Modal } from 'antd';
+const confirm = Modal.confirm;
 
-const Option = Select.Option;
-const columns = [{
-    title: '姓名',
-    dataIndex: 'name',
-}, {
-    title: '性别',
-    dataIndex: 'sex',
-}, {
-    title: '年龄',
-    dataIndex: 'age',
-},{
-    title: '地址',
-    dataIndex: 'address',
-},{
-    title: '手机号',
-    dataIndex: 'phone',
-},{
-    title: '邮箱',
-    dataIndex: 'email',
-},{
-    title: '网址',
-    dataIndex: 'website',
-},{
-    title: '创建时间',
-    dataIndex: 'createtime',
-},{
-    title: '操作',
-    dataIndex: '',
-    // render: () =>
-    //     <Select>
-    //         <Option></Option>
-    //     </Select>
-}];
 const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
         console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
@@ -47,15 +15,74 @@ export default class FormTable extends Component{
     constructor(props){
         super(props);
     }
+    DeleteConfirm = (e) => {
+        console.log(e.target.getAttribute("data-key"));
+        confirm({
+            title: '确定要删除么?',
+            okText: 'Yes',
+            okType: 'danger',
+            cancelText: 'No',
+            onOk() {
+                console.log('OK');
+            },
+            onCancel() {
+                console.log('Cancel');
+            },
+        });
+    };
     render(){
-        const { data } = this.props;
+        const { data, customizedform } = this.props;
+        const columns = [{
+            title: '姓名',
+            dataIndex: 'name',
+            width: 100,
+        }, {
+            title: '性别',
+            dataIndex: 'sex',
+            width: 70,
+        }, {
+            title: '年龄',
+            dataIndex: 'age',
+            width: 70,
+        },{
+            title: '地址',
+            dataIndex: 'address',
+            width: 200,
+        },{
+            title: '手机号',
+            dataIndex: 'phone',
+            width: 100,
+        },{
+            title: '邮箱',
+            dataIndex: 'email',
+            width:120,
+        },{
+            title: '网址',
+            dataIndex: 'website',
+            width:120,
+        },{
+            title: '创建时间',
+            dataIndex: 'createtime',
+            width:150,
+        },{
+            title: '操作',
+            dataIndex: 'opera',
+            width:100,
+            render: () =>
+                <div className='opera'>
+                    <span onClick={customizedform}><Icon type="edit" /> 修改</span><br />
+                    <span onClick={this.DeleteConfirm}><Icon type="minus-square-o" /> 删除</span>
+                </div>
+        }];
         return(
             <Table
                 rowSelection={rowSelection}
                 columns={columns}
                 dataSource={data}
                 bordered={true}
-                className='formTable'/>
+                scroll={{x:'100%'}}
+                className='formTable'
+            />
         )
     }
 }
