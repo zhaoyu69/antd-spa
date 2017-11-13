@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Form, Input, Radio, InputNumber, Cascader, Select, AutoComplete, Rate, Icon } from 'antd';
+import { Modal, Form, Input, Radio, InputNumber, Cascader, Select, AutoComplete } from 'antd';
 import axios from 'axios';
 import Mock from 'mockjs';
 import address from './request/address';
@@ -54,7 +54,7 @@ class CustomizedForm extends Component{
         this.setState({ autoCompleteResult });
     };
     render(){
-        const { visible, onCancel, onCreate, form } = this.props;
+        const { visible, onCancel, onCreate, form, okText, title } = this.props;
         const { getFieldDecorator } = form;
         const { autoCompleteResult } = this.state;
         const FormItemLayout = {
@@ -68,8 +68,8 @@ class CustomizedForm extends Component{
         return (
             <Modal
                 visible={visible}
-                title="填写信息"
-                okText="新建"
+                title={title}
+                okText={okText}
                 onCancel={onCancel}
                 onOk={onCreate}
             >
@@ -108,7 +108,7 @@ class CustomizedForm extends Component{
                     <FormItem label="手机号" {...FormItemLayout} hasFeedback>
                         {getFieldDecorator('phone', {
                             rules: [{
-                                pattern: /^((1[3,5,8][0-9])|(14[5,7])|(17[0,6,7,8])|(19[7]))\d{8}$/, message: "手机号码格式不正确！"
+                                pattern: /^1(3|4|5|7|8)\d{9}$/, message: "手机号码格式不正确！"
                             },{
                                 required: true, message: '请输入手机号！'
                             }],
