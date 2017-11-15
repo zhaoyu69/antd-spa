@@ -11,28 +11,28 @@ const login = [{
     password:'zysoft'
 }];
 
+function PatchUser(values) {  //匹配用户
+    let isOk = 0;
+    login.map(function(item){
+        if(values.username === item.username && values.password === item.password){
+            isOk = isOk || 1;
+        }else{
+            isOk = isOk || 0;
+        }
+    });
+    return isOk;
+};
+
 class NormalLoginForm extends Component {
     state = {
         isLoding:false,
     };
-    PatchUser = (values) => {  //匹配用户
-        let isOk = 0;
-        login.map(function(item,index){
-            if(values.username === item.username && values.password === item.password){
-                isOk = isOk || 1;
-            }else{
-                isOk = isOk || 0;
-            }
-        });
-        return isOk;
-    };
-
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
-                if(this.PatchUser(values)){
+                if(PatchUser(values)){
                     this.setState({
                         isLoding: true,
                     });
@@ -89,7 +89,7 @@ class NormalLoginForm extends Component {
                             Or <a href="">现在就去注册!</a>
                         </FormItem>
                     </Form>
-                    <a className="githubUrl" href=""></a>
+                    <a className="githubUrl" href="#"></a>
                 </div>
             </div>
         );

@@ -17,10 +17,8 @@ class CustomizedForm extends Component{
         super(props);
     }
     componentDidMount(){
-        Mock.mock("/address", address);
         axios.get('/address')
             .then(function (response) {
-                console.log(response.data);
                 response.data.map(function(province){
                     options.push({
                         value: province.name,

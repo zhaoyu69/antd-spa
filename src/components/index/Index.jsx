@@ -3,8 +3,7 @@ import BreadcrumbCustom from '../common/BreadcrumbCustom';
 import { Card, Avatar, Row, Col, Progress, Timeline, Collapse, Table, Switch } from 'antd';
 import zysoft from '../../style/img/avatar.jpg';
 import './index.less';
-import CryptoJS from 'crypto-js';
-import $ from 'jquery';
+// import CryptoJS from 'crypto-js';
 import CountUp from 'react-countup';
 import ReactEcharts from 'echarts-for-react';
 

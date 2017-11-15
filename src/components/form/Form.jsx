@@ -17,6 +17,8 @@ const InputGroup = Input.Group;
 const Option = Select.Option;
 const options = [];
 const { RangePicker } = DatePicker;
+Mock.mock('/address', address);
+Mock.mock('/data', data);
 
 //数组中是否包含某项
 function isContains(arr, item){
@@ -28,6 +30,25 @@ function isContains(arr, item){
     });
     return boo;
 }
+//找到对应元素的索引
+function catchIndex(arr, key){ //获取INDEX
+    let i = 0;
+    arr.map(function (ar, index) {
+        if(ar.key === key){
+            i = index;
+        }
+    });
+    return i;
+}
+//替换数组的对应项
+function replace(arr, item, place){ //arr 数组,item 数组其中一项, place 替换项
+    arr.map(function (ar) {
+        if(ar.key === item){
+            arr.splice(arr.indexOf(ar),1,place)
+        }
+    });
+    return arr;
+}
 
 export default class UForm extends Component{
     constructor(props) {
@@ -37,26 +58,83 @@ export default class UForm extends Component{
             address: '',
             timeRange: '',
             visible: false, //新建窗口隐藏
-            dataSource: data, //初始数据
+            dataSource: [],
             count: data.length,
             selectedRowKeys: [],
-            modalVisible: false,
+            tableRowKey: 0,
+            isUpdate: false,
+            loading: true,
         };
     }
+    //getData
+    getData = () => {
+        axios.get('/data')
+            .then(function (response) {
+                // console.log(response.data);
+                this.setState({
+                    dataSource: response.data,
+                    loading:false
+                })
+            }.bind(this))
+            .catch(function (error) {
+                console.log(error);
+            })
+    };
     //用户名输入
     onChangeUserName = (e) => {
-        this.setState({ userName: e.target.value });
+        const value = e.target.value;
+        this.setState({
+            userName: value,
+        })
+    };
+    //用户名搜索
+    onSearchUserName = (value) => {
+        // console.log(value);
+        const { dataSource } = this.state;
+        this.setState({
+            dataSource: dataSource.filter(item => item.name.indexOf(value) !== -1),
+            loading: false,
+        })
+    };
+    //地址级联选择
+    Cascader_Select = (value) => {
+        const { dataSource } = this.state;
+        if(value.length===0){
+            this.setState({
+                address: value,
+                dataSource: [],
+            });
+            this.getData();
+        }else{
+            this.setState({
+                address: value,
+                dataSource: dataSource.filter(item => item.address === value.join(' / '))
+            });
+        }
     };
     //时间选择
     RangePicker_Select = (date, dateString) => {
-        console.log(date, dateString);
-        this.setState({ timeRange: date });
+        // console.log(date, dateString);
+        const { dataSource } = this.state;
+        const startime = moment(dateString[0]);
+        const endtime = moment(dateString[1]);
+        if(date.length===0){
+            this.setState({
+                timeRange: date,
+                dataSource: [],
+            });
+            this.getData();
+        }else{
+            this.setState({
+                timeRange: date,
+                dataSource: dataSource.filter(item => (moment(item.createtime.substring(0,10)) <= endtime  && moment(item.createtime.substring(0,10)) >= startime) === true)
+            });
+        }
     };
+    //渲染
     componentDidMount(){
-        Mock.mock('/address', address);
         axios.get('/address')
             .then(function (response) {
-                console.log(response.data);
                 response.data.map(function(province){
                     options.push({
                         value: province.name,
@@ -74,32 +152,36 @@ export default class UForm extends Component{
                             }
                         }),
                     })
-                })
+                });
             })
             .catch(function (error) {
                 console.log(error);
             });
+        this.getData();
     }
+    //搜索按钮
     btnSearch_Click = () => {
 
     };
-    //重置
+    //重置按钮
     btnClear_Click = () => {
         this.setState({
             userName: '',
             address: '',
             timeRange: '',
-            dataSource: data,
+            dataSource: [],
             count: data.length,
         });
-    };
-    //地址级联选择
-    Cascader_Select = (value) => {
-        this.setState({ address: value });
+        this.getData();
     };
     //新建信息弹窗
     CreateItem = () => {
-        this.setState({ visible: true });
+        this.setState({
+            visible: true,
+            isUpdate: false,
+        });
+        const form = this.form;
+        form.resetFields();
     };
     //接受新建表单数据
     saveFormRef = (form) => {
@@ -138,13 +220,59 @@ export default class UForm extends Component{
             dataSource: dataSource.filter(item => !isContains(selectedRowKeys, item.key)),
         });
     };
+    //单个删除
+    onDelete = (key) => {
+        const dataSource = [...this.state.dataSource];
+        this.setState({ dataSource: dataSource.filter(item => item.key !== key) });
+    };
+    //点击修改
+    editClick = (key) => {
+        const form = this.form;
+        const { dataSource } = this.state;
+        const index = catchIndex(dataSource, key);
+        form.setFieldsValue({
+            key: key,
+            name: dataSource[index].name,
+            sex: dataSource[index].sex,
+            age: dataSource[index].age,
+            address: dataSource[index].address.split(' / '),
+            phone: dataSource[index].phone,
+            email: dataSource[index].email,
+            website: dataSource[index].website,
+        });
+        this.setState({
+            visible: true,
+            tableRowKey: key,
+            isUpdate: true,
+        });
+    };
+    //更新修改
+    handleUpdate = () => {
+        const form = this.form;
+        const { dataSource, tableRowKey } = this.state;
+        form.validateFields((err, values) => {
+            if (err) {
+                return;
+            }
+            console.log('Received values of form: ', values);
+
+            values.key = tableRowKey;
+            values.address = values.address.join(" / ");
+            values.createtime = moment().format("YYYY-MM-DD hh:mm:ss");
+
+            form.resetFields();
+            this.setState({
+                visible: false,
+                dataSource: replace(dataSource, tableRowKey, values)
+            });
+        });
+    };
     //单选框改变选择
-    checkChange = (selectedRowKeys, selectedRows) => {
-        // console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+    checkChange = (selectedRowKeys) => {
         this.setState({selectedRowKeys: selectedRowKeys});
     };
     render(){
-        const { userName, address, timeRange, dataSource, visible, modalVisible } = this.state;
+        const { userName, address, timeRange, dataSource, visible, isUpdate, loading } = this.state;
         const questiontxt = ()=>{
             return (
                 <p>
@@ -164,7 +292,7 @@ export default class UForm extends Component{
                                 prefix={<Icon type="user" />}
                                 value={userName}
                                 onChange={this.onChangeUserName}
-                                onSearch={value => console.log(value)}
+                                onSearch={this.onSearchUserName}
                             />
                         </Col>
                         <Col className="gutter-row" sm={8}>
@@ -179,14 +307,6 @@ export default class UForm extends Component{
                     <Row gutter={16}>
                         <div className='plus' onClick={this.CreateItem}>
                             <Icon type="plus-circle" />
-                            <CollectionCreateForm
-                                ref={this.saveFormRef}
-                                visible={visible}
-                                onCancel={this.handleCancel}
-                                onCreate={this.handleCreate}
-                                title="新建信息"
-                                okText="创建"
-                            />
                         </div>
                         <div className='minus'>
                             <Popconfirm title="确定要批量删除吗?" onConfirm={this.MinusClick}>
@@ -203,7 +323,17 @@ export default class UForm extends Component{
                             <Button type="primary" onClick={this.btnClear_Click} style={{background:'#f8f8f8', color: '#108ee9'}}>重置</Button>
                         </div>
                     </Row>
-                    <FormTable dataSource={dataSource} checkChange={this.checkChange}></FormTable>
+                    <FormTable
+                        dataSource={dataSource}
+                        checkChange={this.checkChange}
+                        onDelete={this.onDelete}
+                        editClick={this.editClick}
+                        loading={loading}
+                    />
+                    {isUpdate?
+                        <CollectionCreateForm ref={this.saveFormRef} visible={visible} onCancel={this.handleCancel} onCreate={this.handleUpdate} title="修改信息" okText="更新"
+                    /> : <CollectionCreateForm ref={this.saveFormRef} visible={visible} onCancel={this.handleCancel} onCreate={this.handleCreate} title="新建信息" okText="创建"
+                    />}
                 </div>
             </div>
         )
