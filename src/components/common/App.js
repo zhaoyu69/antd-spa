@@ -8,22 +8,14 @@ import HeaderCustom from './HeaderCustom';
 
 import MIndex from '../index/Index';
 import Calendars from '../header/Calendars';
-import Echarts from '../chart/Echarts';
+import Echarts from '../chart/echarts/Echarts';
 import UForm from '../form/Form';
 
 const {Content, Footer} = Layout;
 
-function SiderCollapsed() {
-    if (localStorage.getItem("mspa_SiderCollapsed") === "true") {
-        return true;
-    } else {
-        return false;
-    }
-}
-
 export default class App extends Component {
     state = {
-        collapsed: SiderCollapsed(),
+        collapsed: localStorage.getItem("mspa_SiderCollapsed") === "true",
     };
     toggle = () => {
         this.setState({
@@ -35,7 +27,7 @@ export default class App extends Component {
 
     componentDidMount() {
         //保存Sider收缩
-        if (localStorage.getItem("mspa_SiderCollapsed") == null) {
+        if (localStorage.getItem("mspa_SiderCollapsed") === null) {
             localStorage.setItem("mspa_SiderCollapsed", false);
         }
     }

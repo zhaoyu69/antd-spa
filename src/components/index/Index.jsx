@@ -122,7 +122,7 @@ export default class MIndex extends Component {
         let count = ["1379","768","192","413"];
         let cu = imgSrc.map(function(item,index){
             return(
-                <Col span={6} key={item}>
+                <Col md={6} key={item}>
                     <Card bordered={false} style={{cursor:'pointer'}}>
                         <div className='countBox'>
                             <img src={require('../../style/img/'+item+'.png')}/>
@@ -236,14 +236,14 @@ export default class MIndex extends Component {
                         {this.CountUp()}
                     </Row>
                     <Row gutter={16} style={{marginBottom:'20px'}}>
-                        <Col span={16}>
+                        <Col md={16}>
                             <Card bodyStyle={{padding: 0,height:'277px',overflow:'hidden'}}>
                                 <ReactEcharts
                                     option={this.getOption()}
                                 />
                             </Card>
                         </Col>
-                        <Col span={8}>
+                        <Col md={8}>
                             <Card bodyStyle={{padding: 0}}>
                                 <div className='avatar'>
                                     <Avatar
@@ -267,7 +267,7 @@ export default class MIndex extends Component {
                         </Col>
                     </Row>
                     <Row gutter={16} style={{marginBottom:'20px'}}>
-                        <Col span={8}>
+                        <Col md={8}>
                             <Card>
                                 <div>
                                     <h3>项目进度</h3>
@@ -297,7 +297,7 @@ export default class MIndex extends Component {
                                 </div>
                             </Card>
                         </Col>
-                        <Col span={8}>
+                        <Col md={8}>
                             <Card>
                                 <div>
                                     <h3>项目流程</h3>
@@ -324,7 +324,7 @@ export default class MIndex extends Component {
                                 </div>
                             </Card>
                         </Col>
-                        <Col span={8}>
+                        <Col md={8}>
                             <Card bodyStyle={{height:'407px', overflow:'hidden'}}>
                                 <div>
                                     <h3>人生感悟</h3>
@@ -338,7 +338,7 @@ export default class MIndex extends Component {
                         </Col>
                     </Row>
                     <Row>
-                        <Col span={24}>
+                        <Col md={24}>
                             <Card>
                                 <div style={{marginBottom:'20px'}}>
                                     <h3>留言板</h3>

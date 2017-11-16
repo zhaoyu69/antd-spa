@@ -14,7 +14,6 @@ import FormTable from './FormTable';
 
 const Search = Input.Search;
 const InputGroup = Input.Group;
-const Option = Select.Option;
 const options = [];
 const { RangePicker } = DatePicker;
 Mock.mock('/address', address);

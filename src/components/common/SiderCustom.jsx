@@ -8,38 +8,49 @@ const SubMenu = Menu.SubMenu;
 export default class SiderCustom extends Component{
     constructor(props){
         super(props);
+        const { collapsed, path } = props;
         this.state = {
-            collapsed: props.collapsed
+            collapsed: collapsed,
+            mode: 'inline',
+            firstHide: true,
+            openKey: path.substr(0, path.lastIndexOf('/')),
         }
     }
     componentWillReceiveProps(nextProps) {
         this.onCollapse(nextProps.collapsed);
     }
     onCollapse = (collapsed) => {
-        // console.log(collapsed);
         this.setState({
             collapsed,
+            firstHide: collapsed,
+            mode: collapsed ? 'vertical' : 'inline',
         });
+    };
+    openMenu = v => {
+        console.log(v);
+        this.setState({
+            openKey: v[v.length - 1],
+            firstHide: false,
+        })
     };
     render(){
         const { path } = this.props;
-        const { collapsed } = this.state;
-        const openKey = path.substring(0,path.lastIndexOf('/'));
+        const { collapsed, mode, firstHide, openKey } = this.state;
         return(
             <Sider
             trigger={null}
             collapsed={collapsed}
-            style={{overflowY:'hidden'}}
             >
                 <div className="logo" style={collapsed?{backgroundSize:'70%'}:{backgroundSize:'30%'}}/>
                 <Menu 
-                theme="dark" 
-                mode="inline"
-                defaultSelectedKeys={[path]} 
-                selectedKeys={[path]}
-                defaultOpenKeys={[openKey]}
+                    theme="dark"
+                    mode={mode}
+                    defaultSelectedKeys={[path]}
+                    selectedKeys={[path]}
+                    onOpenChange={this.openMenu}
+                    openKeys={firstHide ? null : [openKey]}
                 >
-                
+
                     <Menu.Item key={"/app"}>
                         <Link to={"/app"}><Icon type="home" /><span>首页</span></Link>
                     </Menu.Item>
