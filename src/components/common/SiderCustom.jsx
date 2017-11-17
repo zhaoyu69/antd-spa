@@ -8,34 +8,47 @@ const SubMenu = Menu.SubMenu;
 export default class SiderCustom extends Component{
     constructor(props){
         super(props);
-        const { collapsed, path } = props;
+        const { collapsed }= props;
         this.state = {
             collapsed: collapsed,
-            mode: 'inline',
-            firstHide: true,
-            openKey: path.substr(0, path.lastIndexOf('/')),
+            firstHide: true, //第一次先隐藏暴露的子菜单
+            selectedKey: '', //选择的路径
+            openKey: '', //打开的路径（选择的上一层）
         }
+    }
+    componentDidMount() {
+        this.setMenuOpen(this.props);
     }
     componentWillReceiveProps(nextProps) {
         this.onCollapse(nextProps.collapsed);
+        this.setMenuOpen(nextProps);
     }
+    setMenuOpen = props => {
+        const {path} = props;
+        this.setState({
+            openKey: path.substr(0, path.lastIndexOf('/')),
+            selectedKey: path
+        });
+    };
     onCollapse = (collapsed) => {
         this.setState({
             collapsed,
             firstHide: collapsed,
-            mode: collapsed ? 'vertical' : 'inline',
+        });
+    };
+    menuClick = e => {
+        this.setState({
+            selectedKey: e.key
         });
     };
     openMenu = v => {
-        console.log(v);
         this.setState({
             openKey: v[v.length - 1],
             firstHide: false,
         })
     };
     render(){
-        const { path } = this.props;
-        const { collapsed, mode, firstHide, openKey } = this.state;
+        const { collapsed, firstHide, openKey, selectedKey } = this.state;
         return(
             <Sider
             trigger={null}
@@ -44,9 +57,9 @@ export default class SiderCustom extends Component{
                 <div className="logo" style={collapsed?{backgroundSize:'70%'}:{backgroundSize:'30%'}}/>
                 <Menu 
                     theme="dark"
-                    mode={mode}
-                    defaultSelectedKeys={[path]}
-                    selectedKeys={[path]}
+                    mode="inline"
+                    selectedKeys={[selectedKey]}
+                    onClick={this.menuClick}
                     onOpenChange={this.openMenu}
                     openKeys={firstHide ? null : [openKey]}
                 >

@@ -17,7 +17,6 @@ export default class Echarts extends Component{
         }
     }
     onChange = (e) => {
-        console.log('radio checked', e.target.value);
         this.setState({
             value: e.target.value,
         });
