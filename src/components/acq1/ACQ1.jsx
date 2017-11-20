@@ -3,7 +3,7 @@ import BreadcrumbCustom from '../common/BreadcrumbCustom';
 import './acq1.less';
 import CountUp from 'react-countup';
 import ReactEcharts from 'echarts-for-react';
-import echarts from 'echarts';
+import SearchData from './SearchData';
 import { Tabs, Icon, Row, Col, Tree, Form, Select, Button, Card } from 'antd';
 
 const TabPane = Tabs.TabPane;
@@ -100,7 +100,7 @@ class ACQ1temp extends Component{
             <div>
                 <BreadcrumbCustom paths={["首页","ACQ1"]}/>
                 <div className="acq1body">
-                    <Tabs defaultActiveKey="2">
+                    <Tabs defaultActiveKey="3">
                         <TabPane tab={<span><Icon type="tool" />串口配置</span>} key="1">
                             <div className="config">
                                 <Row type="flex" justify="center">
@@ -249,7 +249,7 @@ class ACQ1temp extends Component{
                         </TabPane>
                         <TabPane tab={<span><Icon type="search" />数据查询</span>} key="3">
                             <div className="search">
-
+                                <SearchData />
                             </div>
                         </TabPane>
                     </Tabs>
