@@ -4,7 +4,7 @@ import './form.less';
 import axios from 'axios';
 import Mock from 'mockjs';
 import moment from 'moment';
-import { Row, Col, Input, Icon, Select, Cascader, DatePicker, Button, Tooltip, Popconfirm } from 'antd';
+import { Row, Col, Input, Icon, Cascader, DatePicker, Button, Tooltip, Popconfirm } from 'antd';
 
 import BreadcrumbCustom from '../common/BreadcrumbCustom';
 import address from './request/address.json';
