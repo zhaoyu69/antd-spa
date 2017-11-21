@@ -3,6 +3,7 @@ const app = express();
 const server = require('http').Server(app);
 const bodyParser = require('body-parser'); //中间件
 const io = require('socket.io')(server);
+const moment = require('moment');
 let mySocket = {};
 
 //mongodb数据库操作
@@ -45,6 +46,22 @@ serialPort.list(function (err, ports) {
     });
 });
 
+//连接db
+db.open(function(err, db){
+    if(!err){
+        console.log('connect db');
+        db.createCollection('serialtest',function(err, collection){ //创建table
+            if(err){
+                console.log(err);
+            }else{
+                sensordata = collection;
+            }
+        });
+    }else{
+        console.log(err);
+    }
+});
+
 //API
 app.get('/portsName',function(req,res){
     res.send(portsName);
@@ -64,43 +81,44 @@ app.post('/connect',function(req,res){
         mySocket = socket;
         port.on('open',function () {
             console.log('port open');
-            let bufs = [];
+            let bufs = []; //缓存数组
             port.on('data',function (data) {
                 bufs.push(data);
-                let bufRecv = Buffer.concat(bufs);
+                let buf = Buffer.concat(bufs);
                 let _document = {}; //json
                 //协议解析
-                if(bufRecv.length>=5){
-                    if(bufRecv[0]===0xCC && bufRecv[1]===0xDD){
-                        let key = bufRecv[2].toString(16); //ID
+                if(buf.length>=5){
+                    if(buf[0]===0xCC && buf[1]===0xDD){
+                        let key = buf[2].toString(16); //ID
                         // console.log(key);
-                        let len = bufRecv[3];//数据长度
+                        let len = buf[3];//数据长度
                         // console.log(len);
-                        if(bufRecv.length>=len+7){
-                            let mycrc = checkSum(bufRecv,len+7-1); //校验和
-                            // console.log(mycrc);
-                            // console.log(bufRecv[len+7-1].toString(16));
+                        if(buf.length>=len+7){
 
-                            if(mycrc!==bufRecv[len+7-1].toString(16)){
-                                bufs = []; //校验失败清空缓存
-                                // bufRecv.fill(0);
+                            let bufRecv = new Buffer(len+7);
+                            buf.copy(bufRecv, 0, len+7);
+
+                            let mycrc = checkSum(bufRecv,len+7-1); //校验和
+
+                            if(mycrc!==buf[len+7-1].toString(16)){
+                                buf.slice(0, len+7); //校验失败删除这一包数据
                                 console.log("ECC error");
                             }
 
-                            let temp = (bufRecv[4]*256 + bufRecv[5])/10.0; //温度
-                            let humi = (bufRecv[6] * 256 + bufRecv[7]); //湿度
-                            let ch2o = (bufRecv[8] * 256 + bufRecv[9]) / 1000.0; //CH2O
-                            let co2 = (bufRecv[10] * 256 + bufRecv[11]); //CO2
-                            let pm2d5 = (bufRecv[12] * 256 + bufRecv[13]); //PM2.5
-                            let voc = (bufRecv[14] * 256 + bufRecv[15]); //voc
-                            let battery = (bufRecv[16] * 256 + bufRecv[17]) / 1000.0; //电量
-                            let nowtime = getNowFormatDate();
+                            let temp = (buf[4] * 256 + buf[5]) / 10.0; //温度
+                            let humi = (buf[6] * 256 + buf[7]) / 10.0; //湿度
+                            let choh = (buf[8] * 256 + buf[9]) / 1000.0; //CH2O
+                            let co2 = (buf[10] * 256 + buf[11]); //CO2
+                            let pm2d5 = (buf[12] * 256 + buf[13]); //PM2.5
+                            let voc = (buf[14] * 256 + buf[15]) / 1000.0; //voc
+                            let battery = (buf[16] * 256 + buf[17]) / 1000.0; //电量
+                            let nowtime = moment().format("YYYY-MM-DD hh:mm:ss");
 
                             _document = {
                                 'id': key,
                                 'temp':temp,
                                 'humi':humi,
-                                'ch2o':ch2o,
+                                'choh':choh,
                                 'co2':co2,
                                 'pm2d5':pm2d5,
                                 'voc':voc,
@@ -112,8 +130,6 @@ app.post('/connect',function(req,res){
                             sensordata.insert(_document,function(err,result){
                                 if(err){
                                     console.log('Error:'+err);
-                                }else{
-                                    // console.log('Result:'+result);
                                 }
                             });
 
@@ -122,9 +138,9 @@ app.post('/connect',function(req,res){
                                 console.log(data);
                             });
                         }
+                        buf.slice(0, len+7); //解析完成后清空缓存
                     }
                 }
-                bufs = []; //解析完成后清空缓存
             });
         });
     });
@@ -134,24 +150,6 @@ app.post('/connect',function(req,res){
         res.send(err);
     });
 });
-
-//连接db
-db.open(function(err, db){
-    if(!err){
-        console.log('connect db');
-        db.createCollection('serialtest',function(err, collection){ //创建table
-            if(err){
-                console.log(err);
-            }else{
-                sensordata = collection;
-            }
-        });
-    }else{
-        console.log(err);
-    }
-});
-
-// console.log(new Date().toLocaleString()); //2017-08-31 11:46:01
 
 //校验和
 function checkSum(buffer,len){
@@ -164,24 +162,4 @@ function checkSum(buffer,len){
     return ir;
 }
 
-//格式化时间
-function getNowFormatDate() {
-    let date = new Date();
-    let seperator1 = "/";
-    let seperator2 = ":";
-    let month = date.getMonth() + 1;
-    let days = date.getDate();
-    let hours = date.getHours();
-    let minutes = date.getMinutes();
-    let seconds = date.getSeconds();
-    let timeArr = [month,days,hours,minutes,seconds];
-    for(let i=0;i<timeArr.length;i++){
-        if(timeArr[i] <= 9){
-            timeArr[i] = "0" + timeArr[i];
-        }
-    }
-    let currentdate = date.getFullYear() + seperator1 + timeArr[0] + seperator1 + timeArr[1]
-          + " " + timeArr[2] + seperator2 + timeArr[3] + seperator2 + timeArr[4];
-    return currentdate;
-}
 
