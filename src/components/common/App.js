@@ -2,15 +2,15 @@ import React, {Component} from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom';
 import {Layout} from 'antd';
 import '../../style/index.less';
-import noMatch from './404';
+
 import SiderCustom from './SiderCustom';
 import HeaderCustom from './HeaderCustom';
-
 import MIndex from '../index/Index';
 import Calendars from '../header/Calendars';
 import Echarts from '../chart/echarts/Echarts';
 import UForm from '../form/Form';
 import ACQ1 from '../acq1/ACQ1';
+import noMatch from './404';
 
 const {Content, Footer} = Layout;
 

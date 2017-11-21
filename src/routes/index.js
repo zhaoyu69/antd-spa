@@ -7,7 +7,7 @@ import Login from '../components/common/Login';
 import Home from '../components/common/Home';
 import NoMatch from '../components/common/404';
 
-export default class MRoute extends Component {
+class MRoute extends Component {
   render() {
     return (
       <Router history={history}>
@@ -21,3 +21,5 @@ export default class MRoute extends Component {
     );
   }
 }
+
+export default MRoute;

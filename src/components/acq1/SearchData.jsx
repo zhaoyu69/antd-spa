@@ -74,7 +74,7 @@ class SearchDataTemp extends Component{
             },
         };
         return(
-            <div>
+            <div className="search">
                 <Form
                     style={{height:'32px',display:'inline'}}  //如果没有display:inline 响应式时Table会覆盖在Form上
                     className="ant-advanced-search-form"
@@ -124,7 +124,7 @@ class SearchDataTemp extends Component{
                     showSizeChanger
                     onShowSizeChange={this.onShowSizeChange}
                     defaultCurrent={3}
-                    total={500}
+                    total={0}
                     showTotal={(total, range) => `Total ${total} Items`}
                 />
             </div>
