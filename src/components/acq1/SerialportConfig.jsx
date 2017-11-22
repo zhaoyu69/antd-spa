@@ -3,17 +3,24 @@ import { Row, Col, Form, Select, Button } from 'antd';
 
 const FormItem = Form.Item;
 const Option = Select.Option;
-let socket = {};
 
 class SerialportConfigTemp extends Component{
     constructor(props){
         super(props);
-        socket = props.socket;
         this.state = {
             portsName: [],
+            isConn: false, //当前串口是否已经连接上
         }
     }
-    componentWillMount(){
+    componentDidMount(){
+        const socket = this.props.socket;
+        // 询问服务器串口是否已经连上
+        socket.emit('isConn', 'is connected?');
+        socket.on('re_isConn', function (msg) {
+            this.setState({ isConn: msg })
+        }.bind(this));
+
+        // 获取串口数组生成下拉
         fetch('http://localhost/portsName')
             .then(response  => {
                 // console.log(response.status);
@@ -28,13 +35,16 @@ class SerialportConfigTemp extends Component{
             }).catch(e => {
             console.log("something wrong");
         });
+
     }
     handleSubmit = (e) => {
+        const socket = this.props.socket;
+        let once = true;
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
-                fetch('http://localhost/connect',{
+                /*fetch('http://localhost/connect',{
                     method: 'POST',
                     headers:{
                         "Content-Type": "application/json",
@@ -44,13 +54,41 @@ class SerialportConfigTemp extends Component{
                     console.log(res);
                 }).catch(function (err) {
                     console.log(err);
-                })
+                })*/
+                socket.emit('config', values);
+                //打开串口失败
+                socket.on('port err', function (err) {
+                    if(once){
+                        this.setState({isConn: false});
+                        alert(err);
+                        once = false;
+                    }
+                }.bind(this));
+                //成功打开串口
+                if(once){
+                    this.setState({isConn: true});
+                }
             }
         });
     };
+    btnCutDown = () => {
+        const socket = this.props.socket;
+        let once = true;
+        socket.emit('cutdown', 'port cutdown');
+        socket.on('re_cutdown', function (msg) {
+            console.log(msg);
+            this.setState({isConn: !msg});
+        }.bind(this));
+        socket.on('port err', function (err) {
+            if(once){
+                alert(err);
+                once = false;
+            }
+        }.bind(this));
+    };
     render(){
         const { getFieldDecorator } = this.props.form;
-        const { portsName } = this.state;
+        const { portsName, isConn } = this.state;
         const formItemLayout = {
             labelCol: {
                 xs: { span: 24 },
@@ -195,7 +233,9 @@ class SerialportConfigTemp extends Component{
                                 )}
                             </FormItem>
                             <FormItem {...tailFormItemLayout}>
-                                <Button type="primary" htmlType="submit" style={{width:'100%'}}>连接</Button>
+                                {isConn?
+                                    <Button type="danger" style={{width:'100%'}} onClick={this.btnCutDown}>断开</Button>
+                                    : <Button type="primary" htmlType="submit" style={{width:'100%'}}>连接</Button>}
                             </FormItem>
                         </Form>
                     </Col>
