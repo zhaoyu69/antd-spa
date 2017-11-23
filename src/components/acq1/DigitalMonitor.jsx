@@ -6,6 +6,7 @@ import ReactEcharts from 'echarts-for-react';
 const TreeNode = Tree.TreeNode;
 const sensorField = ["温度","湿度","甲醛","CO2","PM2.5","VOC"];
 const sensorUnit = ["℃","%RH","ppm","ppm","ug/m³","mg/m³"];
+const XMAX = 50;
 
 //数组是否包含某元素
 function isContains(arr,obj){
@@ -23,39 +24,64 @@ export default class DigitalMonitor extends Component{
         nodelist:[], //节点集合
         prevSensordata:[0,0,0,0,0,0], //上一包数据
         nowSensordata:[0,0,0,0,0,0],//当前包数据
-        count:0, //X轴坐标
+        count:0, //x轴变化量
+        countlist: [], //x轴数据集合
+        seriesdata: {
+            temp:[],
+            humi:[],
+            choh:[],
+            co2:[],
+            pm2d5:[],
+            voc:[]
+        }, //series数据集合
     };
     componentDidMount(){
         const socket = this.props.socket;
-        const { nodelist } = this.state;
         // 接受实时消息
         socket.on('sensordata', function (data) {
+            const { selectedNode, count, countlist, seriesdata, nodelist } = this.state;
             /*
             * 业务逻辑：
             * 如果节点集合中没有该包的id就将id加入集合，然后更新state。
             * 如果节点集合长度为1，这时候默认选中这个id，并更新一次数据。
             * 如果节点集合中包含该包的id就判断这个id是否等于选中的id，相等则更新数据，不相等就不更新数据
             * */
-            if(!isContains(nodelist,data.id)){
+            if(!isContains(nodelist,data.id)) {
                 nodelist.push(data.id);
                 this.setState({
                     nodelist: nodelist,
                 });
                 if(nodelist.length===1){
-                    this.setState((prevState) => ({
-                        selectedNode: data.id,
-                        nowSensordata: [data.temp, data.humi, data.choh, data.co2, data.pm2d5, data.voc],
-                        prevSensordata: prevState.nowSensordata,
-                    }));
-                }
-            }else{
-                if(this.state.selectedNode===data.id){
-                    // console.log('selectedNode === data.id');
+                    this.setState({ selectedNode: data.id });
+                    for(let item in seriesdata){
+                        seriesdata[item].length>=XMAX?seriesdata[item].shift():seriesdata[item];
+                        seriesdata[item].push(data[item]);
+                    }
+                    countlist.length>=XMAX?countlist.shift():countlist;
+                    countlist.push(count);
                     this.setState((prevState) => ({
                         nowSensordata: [data.temp, data.humi, data.choh, data.co2, data.pm2d5, data.voc],
                         prevSensordata: prevState.nowSensordata,
+                        count: count + 1,
+                        countlist: countlist,
+                        seriesdata:seriesdata,
                     }));
                 }
+            }
+            if(selectedNode===data.id){
+                for(let item in seriesdata){
+                    seriesdata[item].length>=XMAX?seriesdata[item].shift():seriesdata[item];
+                    seriesdata[item].push(data[item]);
+                }
+                countlist.length>=XMAX?countlist.shift():countlist;
+                countlist.push(count);
+                this.setState((prevState) => ({
+                    nowSensordata: [data.temp, data.humi, data.choh, data.co2, data.pm2d5, data.voc],
+                    prevSensordata: prevState.nowSensordata,
+                    count: count + 1,
+                    countlist: countlist,
+                    seriesdata:seriesdata,
+                }));
             }
         }.bind(this));
     }
@@ -72,46 +98,71 @@ export default class DigitalMonitor extends Component{
             prevSensordata:[0,0,0,0,0,0],
             nowSensordata:[0,0,0,0,0,0],
             count:0,
+            countlist: [],
+            seriesdata: {
+                temp:[],
+                humi:[],
+                choh:[],
+                co2:[],
+                pm2d5:[],
+                voc:[]
+            },
         })
     };
     //charts配置
-    getOption = () => {
-        const count = 50;
-        let data = {
-            xd:[],
-            yd:[],
-        };
-        for (let i = 0; i < count; i++) {
-            data.xd.push(i);
-            data.yd.push(Math.floor(Math.random() * i));
-        }
+    getOption = (index, title, unit) => {
+        const { countlist, seriesdata} = this.state;
         const option = {
             title:{
-                text:'曲线图',
-                left:'center',
+                text: title + '['+unit+']',
+                left: 'center',
+                textStyle: {
+                    fontWeight: 'normal',
+                    fontSize: '16'
+                }
             },
             tooltip:{
                 trigger: 'axis',
                 axisPointer: {
-                    animation: false
+                    type: 'cross',
+                    label: {
+                        backgroundColor: '#283b56'
+                    }
                 }
             },
+            grid:{
+                show: true,
+                right:10,
+                top:40,
+                bottom:40,
+            },
             xAxis:{
-                data: data.xd
+                type: 'category',
+                boundaryGap: false,
+                data: countlist,
             },
             yAxis: {
                 type: 'value',
                 boundaryGap: [0, '100%'],
-                splitLine: {
-                    show: false
-                }
+                splitline: {
+                    show: true
+                },
             },
             series:{
                 name:'温度',
                 type:'line',
-                showSymbol: false,
-                hoverAnimation: false,
-                data: data.yd
+                smooth : 0.3,
+                color: ['#108ee9'],
+                data: (function(){
+                    switch (index){
+                        case 0: return seriesdata.temp;
+                        case 1: return seriesdata.humi;
+                        case 2: return seriesdata.choh;
+                        case 3: return seriesdata.co2;
+                        case 4: return seriesdata.pm2d5;
+                        case 5: return seriesdata.voc;
+                    }
+                }.bind(this))()
             }
         };
         return option;
@@ -134,20 +185,22 @@ export default class DigitalMonitor extends Component{
                                 <Icon type="caret-up" style={{color:'green'}}/>
                                 <span style={{color:'green',marginLeft:'10px'}}> { (end-start).toFixed(3) } </span>
                             </p>:<p className="updown">
-                                <Icon type="caret-up" style={{color:'red'}}/>
+                                <Icon type="caret-down" style={{color:'red'}}/>
                                 <span style={{color:'red',marginLeft:'10px'}}> { (start-end).toFixed(3) } </span>
                             </p>
                         }
-
                     </Card>
                 </Col>
             )
         }.bind(this));
         //实时曲线图
-        const showChart = sensorField.map(function (item) {
+        const showChart = sensorField.map(function (item, index) {
             return (
                 <Col md={8} key={item}>
-                    <ReactEcharts option={this.getOption()} style={{width:'100%',height:'300px'}}/>
+                    <ReactEcharts
+                        option={this.getOption(index, item, sensorUnit[index])}
+                        style={{width:'100%',height:'300px'}}
+                    />
                 </Col>
             )
         }.bind(this));
@@ -157,7 +210,6 @@ export default class DigitalMonitor extends Component{
                     <Col md={3}>
                         <Tree defaultExpandAll={true} onSelect={this.selectTreeNode}>
                             <TreeNode title={<span><Icon type="switcher" /> 节点列表</span>}>
-                                <TreeNode key="123" title="123"/>
                                 {this.renderTreeNodes(nodelist)}
                             </TreeNode>
                         </Tree>

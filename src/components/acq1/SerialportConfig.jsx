@@ -44,17 +44,6 @@ class SerialportConfigTemp extends Component{
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
-                /*fetch('http://localhost/connect',{
-                    method: 'POST',
-                    headers:{
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(values)
-                }).then(function (res) {
-                    console.log(res);
-                }).catch(function (err) {
-                    console.log(err);
-                })*/
                 socket.emit('config', values);
                 //打开串口失败
                 socket.on('port err', function (err) {

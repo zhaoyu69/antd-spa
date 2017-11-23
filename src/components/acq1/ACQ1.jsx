@@ -16,7 +16,7 @@ class ACQ1 extends Component{
             <div>
                 <BreadcrumbCustom paths={["首页","ACQ1"]}/>
                 <div className="acq1body">
-                    <Tabs defaultActiveKey="2">
+                    <Tabs defaultActiveKey="3">
                         <TabPane tab={<span><Icon type="tool" />串口配置</span>} key="1">
                             <SerialportConfig socket={socket} />
                         </TabPane>

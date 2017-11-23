@@ -60,11 +60,6 @@ db.open(function(err, db){
     }
 });
 
-//API
-app.get('/portsName',function(req,res){
-    res.send(portsName);
-});
-
 /*
 * 原本的想法是数据实时发送给客户端就行，客户端发送连接POST数据到服务器不需要socket，仅仅使用api接口就行,但是并不可行
 * 所以和除了简单的数据交互和操作mongodb使用api直接fetch，其他需要实时响应的均使用socket.io。
@@ -186,5 +181,82 @@ function checkSum(buffer,len){
     ir = (255-ir+1).toString(16);
     return ir;
 }
+
+//数组是否包含某元素
+function isContains(arr,obj){
+    for(let i = 0; i < arr.length; i++){
+        if(arr[i]===obj){
+            return true;
+        }
+    }
+    return false;
+}
+
+//fetch
+app.get('/portsName',function(req,res){
+    res.send(portsName);
+});
+app.get('/requestID', function (req,res) {
+    let idArr = [];
+    //返回id值,并剔除默认返回的_id
+    //按照id升序排列 降序为-1
+    sensordata.find({}, {id:1 ,_id:0}).sort({
+        id:1
+    }).toArray(function (err,result) {
+        if(err){
+            console.log(err);
+        }else{
+            // console.log(result);
+            result.map(function (item) {
+                if(!isContains(idArr, item.id)){
+                    idArr.push(item.id)
+                }
+            });
+            res.send(JSON.stringify(idArr));
+        }
+    })
+});
+app.post('/search', function (req, res) {
+    let senddata = {};
+    let _id = req.body.ID;
+    //查询条件
+    let start = moment(req.body.time[0]).format("YYYY-MM-DD"); //开始时间
+    let end = moment(req.body.time[1]).format("YYYY-MM-DD"); //结束时间
+    let cdit = _id==="All"?{ time: { "$gte" : start, "$lt" : end } }: {id: _id, time: { "$gte" : start, "$lt" : end }}; //条件
+
+    //这里使用Promise处理异步， 查询完成后发送数据到页面
+    const task1 = new Promise((resolve, reject) => {
+        sensordata.find(cdit, {_id:0})
+            .skip((req.body.current - 1) < 0 ? 0: (req.body.current - 1)* req.body.pageSize)  //跳过部分
+            .limit(req.body.pageSize) //限定数值
+            .toArray(function (err, result) {
+                if(err){
+                    console.log(err);
+                } else{
+                    console.log(result);
+                    senddata["data"] = result;
+                    return resolve();
+                }
+            });
+    });
+
+    const task2 = new Promise((resolve, reject) => {
+        sensordata.find(cdit)
+            .count(function (err, result) {
+                if(err){
+                    console.log(err);
+                }else{
+                    console.log(result);
+                    senddata["count"] = result;
+                    return resolve();
+                }
+            });
+    });
+
+    Promise.all([task1, task2]).then(() => {
+        res.send(JSON.stringify(senddata));
+    });
+});
+
 
 
