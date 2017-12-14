@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import BreadcrumbCustom from '../common/BreadcrumbCustom';
-import './ACQ1.less';
+import './acq1.less';
 import SerialportConfig from './SerialportConfig';
 import DigitalMonitor from './DigitalMonitor';
 import SearchData from './SearchData';
