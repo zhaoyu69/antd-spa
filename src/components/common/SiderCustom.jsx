@@ -55,7 +55,7 @@ export default class SiderCustom extends Component{
             collapsed={collapsed}
             >
                 <div className="logo" style={collapsed?{backgroundSize:'70%'}:{backgroundSize:'30%'}}/>
-                <Menu 
+                <Menu
                     theme="dark"
                     mode="inline"
                     selectedKeys={[selectedKey]}
@@ -78,11 +78,8 @@ export default class SiderCustom extends Component{
                             <Link to={'/app/chart/echarts'}><span>echarts</span></Link>
                         </Menu.Item>
                     </SubMenu>
-                    <Menu.Item key={"/app/acq1"}>
-                        <Link to={"/app/acq1"}><Icon type="desktop" /><span>监测</span></Link>
-                    </Menu.Item>
                 </Menu>
             </Sider>
         )
     }
-} 
+}

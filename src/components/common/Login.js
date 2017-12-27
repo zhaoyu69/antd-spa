@@ -43,7 +43,7 @@ class NormalLoginForm extends Component {
                     setTimeout(function() { //延迟进入
                         that.props.history.push({pathname:'/app',state:values});
                     }, 2000);
-                                      
+
                 }else{
                     message.error('login failed!'); //失败信息
                 }
@@ -89,7 +89,7 @@ class NormalLoginForm extends Component {
                             Or <a href="">现在就去注册!</a>
                         </FormItem>
                     </Form>
-                    <a className="githubUrl" href="#"></a>
+                    <a className="githubUrl" href="https://github.com/zhaoyu69/antd-spa"> </a>
                 </div>
             </div>
         );

@@ -9,7 +9,6 @@ import MIndex from '../index/Index';
 import Calendars from '../header/Calendars';
 import Echarts from '../chart/echarts/Echarts';
 import UForm from '../form/Form';
-import ACQ1 from '../acq1/ACQ1';
 import noMatch from './404';
 
 const {Content, Footer} = Layout;
@@ -50,12 +49,11 @@ export default class App extends Component {
                     <HeaderCustom collapsed={collapsed} toggle={this.toggle} username={name}/>
                     <Content style={{margin: '0 16px'}}>
                         <Switch>
-                            <Route exact path={'/app'} component={MIndex}></Route>
-                            <Route exact path={'/app/form'} component={UForm}></Route>
-                            <Route exact path={'/app/header/Calendars'} component={Calendars}></Route>
-                            <Route exact path={'/app/chart/echarts'} component={Echarts}></Route>
-                            <Route exact path={'/app/acq1'} component={ACQ1}></Route>
-                            <Route component={noMatch}></Route>
+                            <Route exact path={'/app'} component={MIndex}> </Route>
+                            <Route exact path={'/app/form'} component={UForm}> </Route>
+                            <Route exact path={'/app/header/Calendars'} component={Calendars}> </Route>
+                            <Route exact path={'/app/chart/echarts'} component={Echarts}> </Route>
+                            <Route component={noMatch}> </Route>
                         </Switch>
                     </Content>
                     <Footer style={{textAlign: 'center'}}>
