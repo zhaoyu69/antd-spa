@@ -33,6 +33,8 @@ export default class Echarts extends Component{
                 return <WordCloud />;
             case 5:
                 return <Dashboard />;
+            default:
+                return null;
         }
     };
     render(){

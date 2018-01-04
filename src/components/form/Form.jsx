@@ -21,23 +21,21 @@ Mock.mock('/data', data);
 
 //数组中是否包含某项
 function isContains(arr, item){
-    let boo = false;
     arr.map(function (ar) {
         if(ar === item){
-            boo = true;
+            return true;
         }
     });
-    return boo;
+    return false;
 }
 //找到对应元素的索引
 function catchIndex(arr, key){ //获取INDEX
-    let i = 0;
     arr.map(function (ar, index) {
         if(ar.key === key){
-            i = index;
+            return index;
         }
     });
-    return i;
+    return 0;
 }
 //替换数组的对应项
 function replace(arr, item, place){ //arr 数组,item 数组其中一项, place 替换项

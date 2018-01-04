@@ -91,7 +91,7 @@ export default class MIndex extends Component {
                 <Col md={6} key={item}>
                     <Card bordered={false} style={{cursor:'pointer'}}>
                         <div className='countBox'>
-                            <img src={require('../../style/img/'+item+'.png')}/>
+                            <img src={require('../../style/img/'+item+'.png')} alt=""/>
                             <dl>
                                 <dt>{imgName[index]}</dt>
                                 <dd><CountUp start={0} end={count[index]} duration={2.75}/></dd>
@@ -223,7 +223,7 @@ export default class MIndex extends Component {
                                 <div className='weather'>
                                     {/*心知天气API*/}
                                     <div className='weather-img'>
-                                        <img src={require('../../style/img/0.png')}/>
+                                        <img src={require('../../style/img/0.png')} alt=""/>
                                     </div>
                                     <div className='weather-info'>
                                         <span>南京</span>&nbsp;<span>16℃</span>

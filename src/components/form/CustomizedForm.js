@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, Form, Input, Radio, InputNumber, Cascader, Select, AutoComplete } from 'antd';
 import axios from 'axios';
-import Mock from 'mockjs';
 import address from './request/address';
 
 const FormItem = Form.Item;

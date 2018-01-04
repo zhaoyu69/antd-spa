@@ -15,12 +15,11 @@ function PatchUser(values) {  //匹配用户
     let isOk = 0;
     login.map(function(item){
         if(values.username === item.username && values.password === item.password){
-            isOk = isOk || 1;
+            return isOk || 1;
         }else{
-            isOk = isOk || 0;
+            return isOk || 0;
         }
     });
-    return isOk;
 };
 
 class NormalLoginForm extends Component {

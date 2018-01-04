@@ -49,11 +49,11 @@ export default class App extends Component {
                     <HeaderCustom collapsed={collapsed} toggle={this.toggle} username={name}/>
                     <Content style={{margin: '0 16px'}}>
                         <Switch>
-                            <Route exact path={'/app'} component={MIndex}> </Route>
-                            <Route exact path={'/app/form'} component={UForm}> </Route>
-                            <Route exact path={'/app/header/Calendars'} component={Calendars}> </Route>
-                            <Route exact path={'/app/chart/echarts'} component={Echarts}> </Route>
-                            <Route component={noMatch}> </Route>
+                            <Route exact path={'/app'} component={MIndex} />
+                            <Route exact path={'/app/form'} component={UForm} />
+                            <Route exact path={'/app/header/Calendars'} component={Calendars} />
+                            <Route exact path={'/app/chart/echarts'} component={Echarts} />
+                            <Route component={noMatch} />
                         </Switch>
                     </Content>
                     <Footer style={{textAlign: 'center'}}>
