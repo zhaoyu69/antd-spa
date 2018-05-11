@@ -12,14 +12,14 @@ const login = [{
 }];
 
 function PatchUser(values) {  //匹配用户
-    let isOk = 0;
-    login.map(function(item){
+    const results = login.map(function(item){
         if(values.username === item.username && values.password === item.password){
-            return isOk || 1;
+            return 1;
         }else{
-            return isOk || 0;
+            return 0;
         }
     });
+    return results.includes(1);
 };
 
 class NormalLoginForm extends Component {

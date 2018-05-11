@@ -2,6 +2,12 @@
 
 React+Antd后台管理系统
 
+## 更新日志
+218-05-11 
+
+1. echarts: @3.8.5 - @4.1.0
+2. 修复登录失败的问题
+
 ## 效果图
 
 ![login.gif](https://upload-images.jianshu.io/upload_images/7429221-a1992d28799f11ec.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/700)
