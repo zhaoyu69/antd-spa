@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "antd": "^2.13.4",
+    "@tinymce/tinymce-react": "^2.2.5",
+    "antd": "^3.5.4",
     "autoprefixer": "7.1.2",
     "axios": "^0.17.0",
     "babel-core": "6.25.0",
