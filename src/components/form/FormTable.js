@@ -17,7 +17,7 @@ export default class FormTable extends Component{
         const columns = [{
             title: '姓名',
             dataIndex: 'name',
-            width: 100,
+            width: 80,
         }, {
             title: '性别',
             dataIndex: 'sex',
@@ -26,24 +26,24 @@ export default class FormTable extends Component{
                 { text: '女', value: '女' },
             ],
             onFilter: (value, record) => record.sex.indexOf(value) === 0,
-            width: 70,
+            width: 80,
         }, {
             title: '年龄',
             dataIndex: 'age',
             sorter: (a, b) => a.age - b.age,
-            width: 70,
+            width: 80,
         },{
             title: '地址',
             dataIndex: 'address',
-            width: 200,
+            width: 180,
         },{
             title: '手机号',
             dataIndex: 'phone',
-            width: 100,
+            width: 120,
         },{
             title: '邮箱',
             dataIndex: 'email',
-            width:120,
+            width:140,
         },{
             title: '网址',
             dataIndex: 'website',

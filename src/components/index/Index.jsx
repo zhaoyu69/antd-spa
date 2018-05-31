@@ -5,6 +5,7 @@ import zysoft from '../../style/img/avatar.jpg';
 import './index.less';
 import CountUp from 'react-countup';
 import ReactEcharts from 'echarts-for-react';
+const { Meta } = Card;
 
 const Panel = Collapse.Panel;
 const classify = [
@@ -89,14 +90,14 @@ export default class MIndex extends Component {
         let cu = imgSrc.map(function(item,index){
             return(
                 <Col md={6} key={item}>
-                    <Card bordered={false} style={{cursor:'pointer'}}>
-                        <div className='countBox'>
-                            <img src={require('../../style/img/'+item+'.png')} alt=""/>
-                            <dl>
-                                <dt>{imgName[index]}</dt>
-                                <dd><CountUp start={0} end={count[index]} duration={2.75}/></dd>
-                            </dl>
-                        </div>
+                    <Card style={{cursor:'pointer', marginBottom:16}}
+                          actions={[<Icon type="info-circle-o" />, <Icon type="ellipsis" />]}>
+                        <Meta
+                            style={{fontSize:22}}
+                            avatar={<img src={require('../../style/img/'+item+'.png')} alt=""/>}
+                            title={imgName[index]}
+                            description={<CountUp start={0} end={count[index]} duration={2.75}/>}
+                        />
                     </Card>
                 </Col>
             )
@@ -186,7 +187,7 @@ export default class MIndex extends Component {
         let panel = text.map(function(item,index){
             return(
                 <Panel header={classify[index]} key={index}>
-                    <p>{item}</p>
+                    <div>{item}</div>
                     <p className="author">{author[index]}</p>
                 </Panel>
             )
@@ -198,27 +199,31 @@ export default class MIndex extends Component {
             <div>
                 <BreadcrumbCustom paths={['首页']}/>
                 <div className='mindex'>
-                    <Row gutter={16} style={{marginBottom:'20px'}}>
+                    <Row gutter={16}>
                         {this.CountUp()}
                     </Row>
-                    <Row gutter={16} style={{marginBottom:'20px'}}>
+                    <Row gutter={16}>
                         <Col md={16}>
-                            <Card bodyStyle={{padding: 0,height:'277px',overflow:'hidden'}}>
+                            <Card
+                                style={{marginBottom:16}}
+                                bodyStyle={{padding: 0,height:'277px',overflow:'hidden'}}>
                                 <ReactEcharts
                                     option={this.getOption()}
                                 />
                             </Card>
                         </Col>
                         <Col md={8}>
-                            <Card bodyStyle={{padding: 0}}>
+                            <Card
+                                style={{marginBottom:16}}
+                                bodyStyle={{padding: 0}}>
                                 <div className='avatar'>
                                     <Avatar
                                         shape='circle'
                                         src={zysoft}
-                                        style={{width: '60px', height: '60px', borderRadius: '50%'}}
+                                        style={{width: '60px', height: '60px', borderRadius: '50%', marginBottom:16}}
                                     />
-                                    <p>zysoft</p>
-                                    <p>zhaoyu_m69@163.com</p>
+                                    <div>zysoft</div>
+                                    <div>zhaoyu_m69@163.com</div>
                                 </div>
                                 <div className='weather'>
                                     {/*心知天气API*/}
@@ -232,31 +237,31 @@ export default class MIndex extends Component {
                             </Card>
                         </Col>
                     </Row>
-                    <Row gutter={16} style={{marginBottom:'20px'}}>
+                    <Row gutter={16}>
                         <Col md={8}>
-                            <Card>
+                            <Card style={{marginBottom:16}}>
                                 <div>
                                     <h3>项目进度</h3>
-                                    <p>C#Winform/Smart React</p>
+                                    <div>C#Winform/Smart React</div>
                                 </div>
                                 <div className='pro'>
                                     <Row gutter={16}>
                                         <Col span={12}>
-                                            <p>ACQ1</p>
+                                            <div>ACQ1</div>
                                             <Progress type="dashboard" percent={25} width={125} id='pro1'/>
                                         </Col>
                                         <Col span={12}>
-                                            <p>SmartPress</p>
+                                            <div>SmartPress</div>
                                             <Progress type="dashboard" percent={50} width={125} id='pro2'/>
                                         </Col>
                                     </Row>
                                     <Row gutter={16}>
                                         <Col span={12}>
-                                            <p>BUILD6</p>
+                                            <div>BUILD6</div>
                                             <Progress type="dashboard" percent={75} width={125} id='pro3'/>
                                         </Col>
                                         <Col span={12}>
-                                            <p>MSPA</p>
+                                            <div>MSPA</div>
                                             <Progress type="dashboard" percent={100} width={125} format={() => 'Done'} id='pro4'/>
                                         </Col>
                                     </Row>
@@ -264,34 +269,36 @@ export default class MIndex extends Component {
                             </Card>
                         </Col>
                         <Col md={8}>
-                            <Card>
+                            <Card style={{marginBottom:16}}>
                                 <div>
                                     <h3>项目流程</h3>
                                 </div>
                                 <div className="timeline">
                                     <Timeline>
                                         <Timeline.Item color="green">
-                                            <p>创建项目 - 2017-10-01</p>
-                                            <p>搭建UI框架 - 2017-10-02</p>
-                                            <p>对接协议 - 2017-10-04</p>
-                                            <p>实现功能 - 2017-10-05</p>
+                                            <div  className="timeItem">创建项目 - 2017-10-01</div>
+                                            <div  className="timeItem">搭建UI框架 - 2017-10-02</div>
+                                            <div  className="timeItem">对接协议 - 2017-10-04</div>
+                                            <div  className="timeItem">实现功能 - 2017-10-05</div>
                                         </Timeline.Item>
                                         <Timeline.Item color="red">
-                                            <p>通信调试 - 2017-10-10</p>
-                                            <p>功能测试 - 2017-10-11</p>
-                                            <p>错误调试 - 2017-10-13</p>
+                                            <div  className="timeItem">通信调试 - 2017-10-10</div>
+                                            <div  className="timeItem">功能测试 - 2017-10-11</div>
+                                            <div  className="timeItem">错误调试 - 2017-10-13</div>
                                         </Timeline.Item>
                                         <Timeline.Item color="blue">
-                                            <p>界面优化 - 2017-10-15</p>
-                                            <p>性能优化 - 2017-10-17</p>
-                                            <p>发布版本 - 2017-10-20</p>
+                                            <div  className="timeItem">界面优化 - 2017-10-15</div>
+                                            <div  className="timeItem">性能优化 - 2017-10-17</div>
+                                            <div  className="timeItem">发布版本 - 2017-10-20</div>
                                         </Timeline.Item>
                                     </Timeline>
                                 </div>
                             </Card>
                         </Col>
                         <Col md={8}>
-                            <Card bodyStyle={{height:'407px', overflow:'hidden'}}>
+                            <Card
+                                style={{marginBottom:16}}
+                                bodyStyle={{height:'407px', overflow:'hidden'}}>
                                 <div>
                                     <h3>人生感悟</h3>
                                 </div>
@@ -306,7 +313,7 @@ export default class MIndex extends Component {
                     <Row>
                         <Col md={24}>
                             <Card>
-                                <div style={{marginBottom:'20px'}}>
+                                <div style={{marginBottom:16}}>
                                     <h3>留言板</h3>
                                 </div>
                                 <Table
