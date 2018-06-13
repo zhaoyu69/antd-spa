@@ -22,3 +22,6 @@ yarn-error.log*
 
 #webstorm
 .idea
+
+#upload file
+/public/uploads

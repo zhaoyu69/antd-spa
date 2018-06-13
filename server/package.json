@@ -11,6 +11,8 @@
     "express": "~4.16.0",
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
-    "morgan": "~1.9.0"
+    "jquery-file-upload-middleware": "zhaoyu69/jquery-file-upload-middleware",
+    "morgan": "~1.9.0",
+    "qiniu": "^7.1.8"
   }
 }
