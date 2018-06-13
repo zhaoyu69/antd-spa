@@ -2,17 +2,6 @@
 
 React+Antd后台管理系统
 
-## 更新日志
-218-05-31 
-
-1. antd: @2.13.4 - @3.5.4
-2. 增加富文本和markdown显示
-
-218-05-11 
-
-1. echarts: @3.8.5 - @4.1.0
-2. 修复登录失败的问题
-
 ## 效果图
 
 ![login.gif](https://upload-images.jianshu.io/upload_images/7429221-a1992d28799f11ec.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/700)
@@ -33,14 +22,29 @@ React+Antd后台管理系统
 
 ## 快速开始
 
-1. 克隆项目
+1.克隆项目
+```
 git clone git@github.com:zhaoyu69/antd-spa.git
+```
 
-2. 安装依赖
+2.安装客户端依赖
+```
+cd Client
 npm i
+```
 
-3. 运行
+3.运行客户端
+```
 npm run start
+```
 
-4. 打包
-npm run build
+4.安装服务端依赖
+```
+cd ../Server
+npm i 
+```
+
+5.运行服务端
+```
+npm run start 
+```

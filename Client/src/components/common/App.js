@@ -11,6 +11,7 @@ import Echarts from '../chart/echarts/Echarts';
 import UForm from '../form/Form';
 import noMatch from './404';
 import RichText from "../richText/RichText";
+import UploadEditor from "../upload/UploadEditor";
 
 const {Content, Footer} = Layout;
 
@@ -55,6 +56,7 @@ export default class App extends Component {
                             <Route exact path={'/app/header/Calendars'} component={Calendars} />
                             <Route exact path={'/app/chart/echarts'} component={Echarts} />
                             <Route exact path={'/app/richText'} component={RichText} />
+                            <Route exact path={'/app/upload'} component={UploadEditor} />
                             <Route component={noMatch} />
                         </Switch>
                     </Content>

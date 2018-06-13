@@ -81,6 +81,9 @@ export default class SiderCustom extends Component{
                     <Menu.Item key="/app/richText">
                         <Link to={'/app/richText'}><Icon type="edit" /><span>富文本</span></Link>
                     </Menu.Item>
+                    <Menu.Item key="/app/upload">
+                        <Link to={'/app/upload'}><Icon type="upload" /><span>文件上传</span></Link>
+                    </Menu.Item>
                 </Menu>
             </Sider>
         )
