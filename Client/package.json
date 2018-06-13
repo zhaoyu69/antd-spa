@@ -6,7 +6,7 @@
     "@tinymce/tinymce-react": "^2.2.5",
     "antd": "^3.5.4",
     "autoprefixer": "7.1.2",
-    "axios": "^0.17.0",
+    "axios": "^0.17.1",
     "babel-core": "6.25.0",
     "babel-eslint": "7.2.3",
     "babel-jest": "20.0.3",

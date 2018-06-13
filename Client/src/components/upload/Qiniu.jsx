@@ -1,29 +1,73 @@
 import React from 'react';
 import { Upload, Icon, message } from 'antd';
+import axios from 'axios';
+import { serverUrl } from '../../helpers/config';
 const Dragger = Upload.Dragger;
-const props = {
-    name: 'file',
-    multiple: true,
-    action: '//jsonplaceholder.typicode.com/posts/',
-    onChange(info) {
-        const status = info.file.status;
-        if (status !== 'uploading') {
-            console.log(info.file, info.fileList);
-        }
-        if (status === 'done') {
-            message.success(`${info.file.name} file uploaded successfully.`);
-        } else if (status === 'error') {
-            message.error(`${info.file.name} file upload failed.`);
-        }
-    },
-};
+const QINIU_SERVER = "http://upload.qiniup.com/";
 
 export default class Qiniu extends React.Component{
     constructor(props, context) {
         super(props, context);
+        this.state = { token: "", domain: "", fileList:[] };
+        this.getUploadToken();
     }
 
+    handleChange=(info)=>{
+        const { domain } = this.state;
+        let { file, fileList } = info;
+
+        const status = file.status;
+        if (status !== 'uploading') {
+            console.log(file, fileList);
+        }
+        if (status === 'done') {
+            message.success(`${file.name} file uploaded successfully.`);
+        } else if (status === 'error') {
+            message.error(`${file.name} file upload failed.`);
+        }
+
+        fileList = fileList.map((file) => {
+            if (file.response) {
+                file.url = domain + "/" + file.response.key
+            }
+            return file;
+        });
+
+        this.setState({ fileList });
+    };
+
+    handleRemove=(file)=>{
+        let { fileList } = this.state;
+        fileList = fileList.filter(f=>f.status!=="removed");
+        this.setState({fileList});
+    };
+
+    getUploadToken=()=>{
+        // 从服务器获取 token
+        axios.get(serverUrl+'/qiniu/uptoken').then((response)=>{
+            const { token, domain } = response.data;
+            console.log("token:", token, "\ndomain:", domain);
+            this.setState({token, domain});
+        });
+    };
+
     render() {
+        const { token, fileList } = this.state;
+        const props = {
+            name: 'file',
+            listType: 'picture',
+            multiple: true,
+            action: QINIU_SERVER,
+            onChange: this.handleChange,
+            onRemove: this.handleRemove,
+            fileList,
+            data: function (file) {
+                return {
+                    key: file.name,
+                    token: token
+                }
+            }
+        };
         return (
             <div>
                 <Dragger {...props}>

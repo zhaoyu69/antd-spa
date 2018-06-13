@@ -1,10 +1,13 @@
 import React from 'react';
 import { Upload, Icon, message } from 'antd';
 const Dragger = Upload.Dragger;
+const LOCAL_SERVER = "http://localhost:8080/upload";
+
 const props = {
     name: 'file',
+    listType: 'picture',
     multiple: true,
-    action: '//jsonplaceholder.typicode.com/posts/',
+    action: LOCAL_SERVER,
     onChange(info) {
         const status = info.file.status;
         if (status !== 'uploading') {
