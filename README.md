@@ -20,6 +20,10 @@ React+Antd后台管理系统
 
 ![echarts.gif](https://upload-images.jianshu.io/upload_images/7429221-a54312b73224af36.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/700)
 
+![richText.png](https://upload-images.jianshu.io/upload_images/7429221-251a47792b85bf1a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+![upload.png](https://upload-images.jianshu.io/upload_images/7429221-6d2696a56e6b22ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 ## 快速开始
 
 1.克隆项目
@@ -48,3 +52,4 @@ npm i
 ```
 npm run start 
 ```
+
