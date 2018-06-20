@@ -33,7 +33,7 @@ git clone git@github.com:zhaoyu69/antd-spa.git
 
 2.安装客户端依赖
 ```
-cd Client
+cd client
 npm i
 ```
 
@@ -44,7 +44,7 @@ npm run start
 
 4.安装服务端依赖
 ```
-cd ../Server
+cd ../server
 npm i 
 ```
 
