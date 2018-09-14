@@ -58,7 +58,6 @@ class CustomizedForm extends Component{
             labelCol: { span: 5 },
             wrapperCol: { span: 16 },
         };
-        const PhoneBefore = <p style={{ width: 40 }}>+86</p>;
         const websiteOptions = autoCompleteResult.map(website => (
             <AutoCompleteOption key={website}>{website}</AutoCompleteOption>
         ));
@@ -82,7 +81,7 @@ class CustomizedForm extends Component{
                         {getFieldDecorator('sex', {
                             rules: [{ required: true, message: '请选择性别！' }],
                         })(
-                            <Radio.Group>
+                            <Radio.Group style={{marginRight: 20}}>
                                 <Radio value='男'>男</Radio>
                                 <Radio value='女'>女</Radio>
                             </Radio.Group>
@@ -110,7 +109,7 @@ class CustomizedForm extends Component{
                                 required: true, message: '请输入手机号！'
                             }],
                         })(
-                            <Input addonBefore={PhoneBefore} style={{ width: '100%' }} />
+                            <Input addonBefore={"+86"} style={{ width: '100%' }} />
                         )}
                     </FormItem>
                     <FormItem label="邮箱" {...FormItemLayout} hasFeedback>

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import BreadcrumbCustom from "../common/BreadcrumbCustom";
-import { Row, Col } from 'antd';
+import { Row, Col, Button, notification } from 'antd';
 import { Editor } from '@tinymce/tinymce-react';
 import './github-markdown.css';
 
@@ -54,12 +54,31 @@ export default class RichText extends Component {
         this.setState({html});
     };
 
+    copyHtml=()=>{
+        const { html } = this.state;
+        const textField = document.createElement('textarea');
+        textField.innerText = html;
+        document.body.appendChild(textField);
+        textField.select();
+        document.execCommand('copy');
+        textField.remove();
+        notification.success({
+            message: '复制成功',
+            description: '',
+        })
+    };
+
     render() {
         const { html } = this.state;
         return (
             <div>
                 <BreadcrumbCustom paths={['首页','富文本']}/>
+                <Button type={"primary"} onClick={this.copyHtml} style={{ marginBottom: 8 }}>复制html</Button>
                 <Row gutter={16}>
+                    <Col md={12}>
+                        <div dangerouslySetInnerHTML={{__html: html}} className="markdown-body"
+                             style={{minHeight:400,padding:10,boxShadow:"0 1px 6px #ccc",background:"#fff"}}/>
+                    </Col>
                     <Col md={12} style={{marginBottom:20}}>
                         <Editor
                             apiKey="vllql17719yol7wzs2jfv3c15hchg5efq6z3vp7rufn6jgqh"
@@ -77,10 +96,6 @@ export default class RichText extends Component {
                             }}
                             onEditorChange={this.handleEditorChange}
                         />
-                    </Col>
-                    <Col md={12}>
-                        <div dangerouslySetInnerHTML={{__html: html}} className="markdown-body"
-                             style={{minHeight:400,padding:10,boxShadow:"0 1px 6px #ccc",background:"#fff"}}/>
                     </Col>
                 </Row>
             </div>

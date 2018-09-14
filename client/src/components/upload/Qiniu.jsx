@@ -75,7 +75,7 @@ export default class Qiniu extends React.Component{
                         <Icon type="inbox" />
                     </p>
                     <p className="ant-upload-text">点击或拖拽上传</p>
-                    <p className="ant-upload-hint">本地文件服务</p>
+                    <p className="ant-upload-hint">七牛云文件服务</p>
                 </Dragger>
             </div>
         );

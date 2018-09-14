@@ -64,14 +64,14 @@ class NormalLoginForm extends Component {
                             {getFieldDecorator('username', {
                                 rules: [{ required: true, message: '请输入用户名!' }],
                             })(
-                                <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="用户名" />
+                                <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="用户名 (admin)" />
                             )}
                         </FormItem>
                         <FormItem>
                             {getFieldDecorator('password', {
                                 rules: [{ required: true, message: '请输入密码!' }],
                             })(
-                                <Input prefix={<Icon type="lock" style={{ fontSize: 13 }} />} type="password" placeholder="密码" />
+                                <Input prefix={<Icon type="lock" style={{ fontSize: 13 }} />} type="password" placeholder="密码 (admin)" />
                             )}
                         </FormItem>
                         <FormItem style={{marginBottom:'0'}}>
