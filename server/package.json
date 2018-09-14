@@ -9,6 +9,7 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.16.0",
+    "hoek": "^5.0.4",
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
     "jquery-file-upload-middleware": "zhaoyu69/jquery-file-upload-middleware",
