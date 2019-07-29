@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom';
 import {Layout} from 'antd';
 import '../../style/index.less';
+import {getCookie, setCookie} from "../../helpers/cookies";
 
 import SiderCustom from './SiderCustom';
 import HeaderCustom from './HeaderCustom';
@@ -17,20 +18,20 @@ const {Content, Footer} = Layout;
 
 export default class App extends Component {
     state = {
-        collapsed: localStorage.getItem("mspa_SiderCollapsed") === "true",
+        collapsed: getCookie("mspa_SiderCollapsed") === "true",
     };
     toggle = () => {
         this.setState({
             collapsed: !this.state.collapsed,
         }, function () {
-            localStorage.setItem("mspa_SiderCollapsed", this.state.collapsed);
+            setCookie("mspa_SiderCollapsed", this.state.collapsed);
         });
     };
 
     componentDidMount() {
         //保存Sider收缩
-        if (localStorage.getItem("mspa_SiderCollapsed") === null) {
-            localStorage.setItem("mspa_SiderCollapsed", false);
+        if (getCookie("mspa_SiderCollapsed") === null) {
+            setCookie("mspa_SiderCollapsed", false);
         }
     }
 
@@ -38,10 +39,10 @@ export default class App extends Component {
         const {collapsed} = this.state;
         const {location} = this.props;
         let name;
-        if (localStorage.getItem("mspa_user") === null) {
+        if (!getCookie("mspa_user")) {
             return <Redirect to="/login"/>
         } else {
-            name = location.state === undefined ? JSON.parse(localStorage.getItem("mspa_user")).username : location.state.username;
+            name = JSON.parse(getCookie("mspa_user")).username;
         }
 
         return (

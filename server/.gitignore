@@ -25,3 +25,5 @@ yarn-error.log*
 
 #upload file
 /public/uploads
+
+package-lock.json

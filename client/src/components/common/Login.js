@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
+import {setCookie} from "../../helpers/cookies";
 import '../../style/login.less';
 import { Form, Icon, Input, Button, Checkbox, message, Spin } from 'antd';
 const FormItem = Form.Item;
 
-const login = [{
+const client_id = 'b7f8065ab0c7188c2a21';
+const authorize_uri = 'https://github.com/login/oauth/authorize';
+const redirect_uri = 'http://localhost:8080/oauth/redirect';
+
+const users = [{
     username:'admin',
     password:'admin'
 },{
@@ -12,15 +17,9 @@ const login = [{
 }];
 
 function PatchUser(values) {  //匹配用户
-    const results = login.map(function(item){
-        if(values.username === item.username && values.password === item.password){
-            return 1;
-        }else{
-            return 0;
-        }
-    });
-    return results.includes(1);
-};
+    const {username, password} = values;
+    return users.find(user => user.username === username && user.password === password);
+}
 
 class NormalLoginForm extends Component {
     state = {
@@ -36,7 +35,7 @@ class NormalLoginForm extends Component {
                         isLoding: true,
                     });
 
-                    localStorage.setItem('mspa_user',JSON.stringify(values));
+                    setCookie('mspa_user',JSON.stringify(values));
                     message.success('login successed!'); //成功信息
                     let that = this;
                     setTimeout(function() { //延迟进入
@@ -88,7 +87,7 @@ class NormalLoginForm extends Component {
                             Or <a href="">现在就去注册!</a>
                         </FormItem>
                     </Form>
-                    <a className="githubUrl" href="https://github.com/zhaoyu69/antd-spa"> </a>
+                    <a className="githubUrl" href={`${authorize_uri}?client_id=${client_id}&redirect_uri=${redirect_uri}`}> </a>
                 </div>
             </div>
         );

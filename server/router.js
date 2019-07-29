@@ -1,11 +1,13 @@
 'use strict';
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const qiniuRouter = require('./routes/qiniu');
+const users = require('./routes/users');
+const qiniu = require('./routes/qiniu');
+const oauth = require('./routes/oauth');
 
 module.exports = app => {
     app.use('/', indexRouter);
-    app.use('/users', usersRouter);
-    app.use('/qiniu', qiniuRouter);
+    app.use('/users', users);
+    app.use('/qiniu', qiniu);
+    app.use('/oauth', oauth);
 };
