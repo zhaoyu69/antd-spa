@@ -1,7 +1,6 @@
 import React from 'react';
 import { Upload, Icon, message } from 'antd';
 import axios from 'axios';
-import { serverUrl } from '../../helpers/config';
 const Dragger = Upload.Dragger;
 const QINIU_SERVER = "http://upload.qiniup.com/";
 
@@ -44,7 +43,7 @@ export default class Qiniu extends React.Component{
 
     getUploadToken=()=>{
         // 从服务器获取 token
-        axios.get(serverUrl+'/qiniu/uptoken').then((response)=>{
+        axios.get('/qiniu/uptoken').then((response)=>{
             const { token, domain } = response.data;
             console.log("token:", token, "\ndomain:", domain);
             this.setState({token, domain});
