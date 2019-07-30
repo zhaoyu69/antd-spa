@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Layout, Icon, Menu, Badge } from 'antd';
 import { Link } from 'react-router-dom';
 import history from './history';
+import {removeCookie} from "../../helpers/cookies";
 
 const { Header } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -24,7 +25,7 @@ export default class HeaderCustom extends Component{
         });
     };
     logout(){
-        localStorage.removeItem("mspa_user");
+        removeCookie("mspa_user");
         history.push('/login');
     }
     render(){

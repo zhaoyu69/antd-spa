@@ -39,7 +39,8 @@ export default class App extends Component {
         const {collapsed} = this.state;
         const {location} = this.props;
         let name;
-        if (!getCookie("mspa_user")) {
+        console.log(typeof getCookie(""));
+        if (!getCookie("mspa_user") || getCookie("mspa_user") === "undefined") {
             return <Redirect to="/login"/>
         } else {
             name = JSON.parse(getCookie("mspa_user")).username;
