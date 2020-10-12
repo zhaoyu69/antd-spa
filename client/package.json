@@ -40,7 +40,7 @@
     "js-cookie": "^2.2.0",
     "mockjs": "^1.0.1-beta3",
     "moment": "^2.19.1",
-    "mongodb": "^2.2.33",
+    "mongodb": "^3.6.2",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.6",
